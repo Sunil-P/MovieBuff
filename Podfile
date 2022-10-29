@@ -7,7 +7,6 @@ target 'FrontendAppKit' do
   platform :ios, '15.5'
 
   # Pods for FrontendAppKit
-  pod 'Swinject'
 
   target 'FrontendAppKitTests' do
     # Pods for testing
