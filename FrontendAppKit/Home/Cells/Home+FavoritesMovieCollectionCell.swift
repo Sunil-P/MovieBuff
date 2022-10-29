@@ -9,6 +9,10 @@ import UIKit
 
 class Home_FavoritesMovieCollectionCell: UICollectionViewCell {
 
-    @IBOutlet weak var moviePosterImage: UIImageView!
-    
+    @IBOutlet weak var moviePosterButton: UIButton!
+
+    override func awakeFromNib() {
+
+        super.awakeFromNib()
+    }
 }

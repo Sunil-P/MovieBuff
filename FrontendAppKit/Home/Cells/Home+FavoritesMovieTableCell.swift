@@ -11,6 +11,8 @@ class Home_FavoritesMovieTableCell: UITableViewCell, UICollectionViewDelegate, U
 
     @IBOutlet weak var collectionView: UICollectionView!
 
+    var favoriteMovieButtonAction: ((_ tag: Int)->())?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -40,8 +42,16 @@ class Home_FavoritesMovieTableCell: UITableViewCell, UICollectionViewDelegate, U
 
         ) as! Home_FavoritesMovieCollectionCell
 
-        cell.moviePosterImage.image = UIImage(named: "samplePoster", in: Styles.frontendAppKitBundle, with: .none)
+        cell.moviePosterButton.tag = indexPath.row
+        cell.moviePosterButton.imageView?.image = UIImage(named: "samplePoster", in: Styles.frontendAppKitBundle, with: .none)
+        cell.moviePosterButton.addTarget(self, action: #selector(moviePosterButtonClicked(_:)), for: .touchUpInside)
 
         return cell
+    }
+
+    @objc func moviePosterButtonClicked (_ sender:UIButton) {
+
+        print("tag = \(sender.tag)")
+        favoriteMovieButtonAction?(sender.tag)
     }
 }

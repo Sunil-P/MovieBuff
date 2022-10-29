@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		565DBD067BBE8CF242A8D601 /* Pods_FrontendAppKit_FrontendAppKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D33A0A0922C47FAAA31012 /* Pods_FrontendAppKit_FrontendAppKitTests.framework */; };
 		6B8C773C290D69D500317023 /* Home+FavoritesMovieTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8C773B290D69D500317023 /* Home+FavoritesMovieTableCell.swift */; };
+		6B8C7740290D846E00317023 /* Home+SearchButtonTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8C773F290D846E00317023 /* Home+SearchButtonTableCell.swift */; };
 		6B8CE60C290C672D009B8337 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8CE60B290C672D009B8337 /* AppDelegate.swift */; };
 		6B8CE60E290C672D009B8337 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8CE60D290C672D009B8337 /* SceneDelegate.swift */; };
 		6B8CE615290C672F009B8337 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B8CE614290C672F009B8337 /* Assets.xcassets */; };
@@ -35,7 +36,6 @@
 		6BF2B3E2290CA09000581082 /* Blocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2B3E1290CA08F00581082 /* Blocks.swift */; };
 		6BF2B3E4290CA0C900581082 /* Styles+FavoritesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2B3E3290CA0C900581082 /* Styles+FavoritesButton.swift */; };
 		6BF2B3F7290CA63800581082 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2B3F6290CA63800581082 /* Home.swift */; };
-		6BF2B3FD290CA79300581082 /* Home+SearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2B3FC290CA79300581082 /* Home+SearchButton.swift */; };
 		6BF2B3FF290CA7FC00581082 /* Styles+Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2B3FE290CA7FC00581082 /* Styles+Home.swift */; };
 		6BF2B402290CA86400581082 /* Styles+Home+SearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2B401290CA86400581082 /* Styles+Home+SearchButton.swift */; };
 		6BF2B407290CAC9A00581082 /* Home+VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2B406290CAC9A00581082 /* Home+VC.swift */; };
@@ -98,6 +98,7 @@
 		4CAE310CA7D5DCC0E9C918EA /* Pods_FrontendAppKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FrontendAppKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		59B8C216DCB9B5A95720EDD2 /* Pods-CommonKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonKit.debug.xcconfig"; path = "Target Support Files/Pods-CommonKit/Pods-CommonKit.debug.xcconfig"; sourceTree = "<group>"; };
 		6B8C773B290D69D500317023 /* Home+FavoritesMovieTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+FavoritesMovieTableCell.swift"; sourceTree = "<group>"; };
+		6B8C773F290D846E00317023 /* Home+SearchButtonTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+SearchButtonTableCell.swift"; sourceTree = "<group>"; };
 		6B8CE608290C672D009B8337 /* MovieBuff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieBuff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B8CE60B290C672D009B8337 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B8CE60D290C672D009B8337 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -124,7 +125,6 @@
 		6BF2B3E1290CA08F00581082 /* Blocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blocks.swift; sourceTree = "<group>"; };
 		6BF2B3E3290CA0C900581082 /* Styles+FavoritesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Styles+FavoritesButton.swift"; sourceTree = "<group>"; };
 		6BF2B3F6290CA63800581082 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
-		6BF2B3FC290CA79300581082 /* Home+SearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+SearchButton.swift"; sourceTree = "<group>"; };
 		6BF2B3FE290CA7FC00581082 /* Styles+Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Styles+Home.swift"; sourceTree = "<group>"; };
 		6BF2B401290CA86400581082 /* Styles+Home+SearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Styles+Home+SearchButton.swift"; sourceTree = "<group>"; };
 		6BF2B406290CAC9A00581082 /* Home+VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+VC.swift"; sourceTree = "<group>"; };
@@ -298,7 +298,6 @@
 				6BF2B3F6290CA63800581082 /* Home.swift */,
 				6BF2B406290CAC9A00581082 /* Home+VC.swift */,
 				6BF2B403290CAC5700581082 /* TableView */,
-				6BF2B3FB290CA77F00581082 /* SearchButton */,
 				6BF2B3D2290C885A00581082 /* Cells */,
 			);
 			path = Home;
@@ -310,6 +309,7 @@
 				6B8C773B290D69D500317023 /* Home+FavoritesMovieTableCell.swift */,
 				6B96AA03290D623200046F86 /* Home+FavoritesMovieCollectionCell.swift */,
 				6BF2B3D3290C886F00581082 /* Home+StaffPickTableCell.swift */,
+				6B8C773F290D846E00317023 /* Home+SearchButtonTableCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -339,14 +339,6 @@
 				6BF2B3D6290C91CB00581082 /* Blocks+FavoritesButton */,
 			);
 			path = Blocks;
-			sourceTree = "<group>";
-		};
-		6BF2B3FB290CA77F00581082 /* SearchButton */ = {
-			isa = PBXGroup;
-			children = (
-				6BF2B3FC290CA79300581082 /* Home+SearchButton.swift */,
-			);
-			path = SearchButton;
 			sourceTree = "<group>";
 		};
 		6BF2B400290CA81000581082 /* Home */ = {
@@ -701,9 +693,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B8C7740290D846E00317023 /* Home+SearchButtonTableCell.swift in Sources */,
 				6B8C773C290D69D500317023 /* Home+FavoritesMovieTableCell.swift in Sources */,
 				6BF2B3DA290C99B000581082 /* TestVCViewController.swift in Sources */,
-				6BF2B3FD290CA79300581082 /* Home+SearchButton.swift in Sources */,
 				6BF2B402290CA86400581082 /* Styles+Home+SearchButton.swift in Sources */,
 				6BF2B3D1290C80B900581082 /* Home+TableView+VC.swift in Sources */,
 				6BF2B40C290CAE9800581082 /* UIKit+Shadow.swift in Sources */,

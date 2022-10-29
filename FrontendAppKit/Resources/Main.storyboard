@@ -53,8 +53,42 @@
                     <view key="view" contentMode="scaleToFill" id="InP-kT-o0y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbs-Ac-vN8" userLabel="searchButton">
+                                <rect key="frame" x="183" y="424" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="6We-ox-ICo"/>
+                                    <constraint firstAttribute="height" constant="48" id="bAs-LR-EAM"/>
+                                </constraints>
+                                <color key="tintColor" name="highEmphasis"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="searchButton">
+                                    <backgroundConfiguration key="background" cornerRadius="12">
+                                        <color key="backgroundColor" name="primary"/>
+                                    </backgroundConfiguration>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.20000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="shadowOffset">
+                                        <point key="value" x="0.0" y="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="dOX-Af-J2h"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nbs-Ac-vN8" firstAttribute="centerX" secondItem="InP-kT-o0y" secondAttribute="centerX" id="DRd-Mo-dps"/>
+                            <constraint firstItem="nbs-Ac-vN8" firstAttribute="centerY" secondItem="InP-kT-o0y" secondAttribute="centerY" id="NMR-y3-4p2"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lFk-sq-m3S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -65,66 +99,57 @@
         <scene sceneID="WXc-Nq-Fvc">
             <objects>
                 <tableViewController storyboardIdentifier="home" id="hzt-fi-0bm" customClass="Home_TableViewVC" customModule="FrontendAppKit" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="SHc-pl-QlB">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="SHc-pl-QlB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="searchButtonTableCell" id="ekM-G2-MIX" userLabel="SearchButtonTableCell">
+                            <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="searchButtonTableCell" id="ekM-G2-MIX" userLabel="SearchButtonTableCell" customClass="Home_SearchButtonTableCell" customModule="FrontendAppKit" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="49.5" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ekM-G2-MIX" id="gx6-8X-jFK">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c6C-ZW-hE1" userLabel="MarginView">
-                                            <rect key="frame" x="30" y="0.0" width="384" height="44"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Huy-NI-Hnu" userLabel="searchButton">
-                                                    <rect key="frame" x="0.0" y="-2" width="48" height="48"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="48" id="6V5-4U-0iH"/>
-                                                        <constraint firstAttribute="height" constant="48" id="Zzf-ID-gsl"/>
-                                                    </constraints>
-                                                    <color key="tintColor" name="highEmphasis"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" image="searchButton">
-                                                        <backgroundConfiguration key="background" cornerRadius="12">
-                                                            <color key="backgroundColor" name="primary"/>
-                                                        </backgroundConfiguration>
-                                                    </buttonConfiguration>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                            <real key="value" value="0.20000000000000001"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="point" keyPath="shadowOffset">
-                                                            <point key="value" x="0.0" y="0.0"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                            <real key="value" value="10"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </button>
-                                            </subviews>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Huy-NI-Hnu" userLabel="searchButton">
+                                            <rect key="frame" x="30" y="-2" width="48" height="48"/>
                                             <constraints>
-                                                <constraint firstItem="Huy-NI-Hnu" firstAttribute="centerY" secondItem="c6C-ZW-hE1" secondAttribute="centerY" id="Eq8-IA-cJM"/>
-                                                <constraint firstItem="Huy-NI-Hnu" firstAttribute="leading" secondItem="c6C-ZW-hE1" secondAttribute="leading" id="pTu-3N-ctD"/>
+                                                <constraint firstAttribute="width" constant="48" id="6V5-4U-0iH"/>
+                                                <constraint firstAttribute="height" constant="48" id="Zzf-ID-gsl"/>
                                             </constraints>
-                                        </view>
+                                            <color key="tintColor" name="highEmphasis"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" image="searchButton">
+                                                <backgroundConfiguration key="background" cornerRadius="12">
+                                                    <color key="backgroundColor" name="primary"/>
+                                                </backgroundConfiguration>
+                                            </buttonConfiguration>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                    <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                    <real key="value" value="0.20000000000000001"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="point" keyPath="shadowOffset">
+                                                    <point key="value" x="0.0" y="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="c6C-ZW-hE1" secondAttribute="bottom" id="2uP-mo-F38"/>
-                                        <constraint firstAttribute="trailing" secondItem="c6C-ZW-hE1" secondAttribute="trailing" id="5EX-3o-ool"/>
-                                        <constraint firstItem="c6C-ZW-hE1" firstAttribute="leading" secondItem="gx6-8X-jFK" secondAttribute="leading" constant="30" id="bJv-6A-GbT"/>
-                                        <constraint firstItem="c6C-ZW-hE1" firstAttribute="top" secondItem="gx6-8X-jFK" secondAttribute="top" id="jTF-NW-TJC"/>
+                                        <constraint firstItem="Huy-NI-Hnu" firstAttribute="leading" secondItem="gx6-8X-jFK" secondAttribute="leading" constant="30" id="Gxg-Ex-LzG"/>
+                                        <constraint firstItem="Huy-NI-Hnu" firstAttribute="centerY" secondItem="gx6-8X-jFK" secondAttribute="centerY" id="nzN-ba-ly7"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" name="primary"/>
+                                <connections>
+                                    <outlet property="searchButton" destination="Huy-NI-Hnu" id="FzJ-tt-zCK"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="favoritesMovieTableCell" id="rX0-rS-HxX" userLabel="FavoritesMovieTableCell" customClass="Home_FavoritesMovieTableCell" customModule="FrontendAppKit" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="93.5" width="414" height="30"/>
@@ -149,21 +174,25 @@
                                                     <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="EGd-3Z-qAL">
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="samplePoster" translatesAutoresizingMaskIntoConstraints="NO" id="IIk-4j-OWl" userLabel="MoviePoster">
-                                                                <rect key="frame" x="0.0" y="0.0" width="182" height="0.0"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awo-78-316">
+                                                                <rect key="frame" x="-12" y="-6.5" width="24" height="14"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="182" id="GQj-XD-XBO"/>
-                                                                    <constraint firstAttribute="height" constant="270" id="RNv-ko-H69"/>
+                                                                    <constraint firstAttribute="width" constant="182" id="WLy-xQ-Rip"/>
+                                                                    <constraint firstAttribute="height" constant="270" id="a7M-Jz-6zY"/>
                                                                 </constraints>
-                                                            </imageView>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain">
+                                                                    <backgroundConfiguration key="background" cornerRadius="14" image="samplePoster"/>
+                                                                </buttonConfiguration>
+                                                            </button>
                                                         </subviews>
                                                         <constraints>
-                                                            <constraint firstItem="IIk-4j-OWl" firstAttribute="leading" secondItem="EGd-3Z-qAL" secondAttribute="leading" id="eq9-sA-zHo"/>
-                                                            <constraint firstItem="IIk-4j-OWl" firstAttribute="top" secondItem="EGd-3Z-qAL" secondAttribute="top" id="hPr-ie-Vpa"/>
+                                                            <constraint firstItem="awo-78-316" firstAttribute="top" secondItem="EGd-3Z-qAL" secondAttribute="top" id="YGY-Nc-ypD"/>
+                                                            <constraint firstItem="awo-78-316" firstAttribute="leading" secondItem="EGd-3Z-qAL" secondAttribute="leading" id="kOg-ZW-fod"/>
                                                         </constraints>
                                                     </collectionViewCellContentView>
                                                     <connections>
-                                                        <outlet property="moviePosterImage" destination="IIk-4j-OWl" id="Rmi-x6-Ubu"/>
+                                                        <outlet property="moviePosterButton" destination="awo-78-316" id="XzU-dE-cEw"/>
                                                     </connections>
                                                 </collectionViewCell>
                                             </cells>

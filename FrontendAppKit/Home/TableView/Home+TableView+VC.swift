@@ -89,7 +89,7 @@ class Home_TableViewVC: UITableViewController {
 
         if indexPath.section == 0 {
 
-            return 14
+            return 100
 
         } else if indexPath.section == 1 {
 
@@ -101,23 +101,18 @@ class Home_TableViewVC: UITableViewController {
         }
     }
 
-//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//
-//        if section == 0 {
-//
-//            return 0
-//
-//        } else {
-//
-//            return 14
-//        }
-//    }
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         if indexPath.section == 0 {
 
             let cell = tableView.dequeueReusableCell(withIdentifier: "searchButtonTableCell", for: indexPath)
+
+            if let searchButtonCell = cell as? Home_SearchButtonTableCell {
+
+                searchButtonCell.searchButton.tag = indexPath.row
+                searchButtonCell.searchButton.addTarget(self, action: #selector(searchButtonClicked(_:)), for: .touchUpInside)
+            }
+
             return cell
 
         } else if indexPath.section == 1 {
@@ -126,7 +121,10 @@ class Home_TableViewVC: UITableViewController {
 
             if let favoritesMovieCell = cell as? Home_FavoritesMovieTableCell {
 
-                
+                favoritesMovieCell.favoriteMovieButtonAction = { [weak self] tag in
+
+                    self?.favouriteMovieClicked(tag: tag)
+                }
             }
 
             return cell
@@ -138,49 +136,14 @@ class Home_TableViewVC: UITableViewController {
         }
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    @objc func searchButtonClicked (_ sender:UIButton) {
+
+        print("SDSeSD")
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    func favouriteMovieClicked(tag: Int) {
+
+        print("Segue to fav movie with tag: \(tag)")
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 } // Home_TableViewVC
