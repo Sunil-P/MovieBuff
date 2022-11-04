@@ -9,7 +9,7 @@ import UIKit
 
 class Home_FavoritesMovieCollectionCell: UICollectionViewCell {
 
-    @IBOutlet weak var moviePosterButton: UIButton!
+    @IBOutlet weak var moviePosterButton: CustomImageButtonView!
 
     override func awakeFromNib() {
 

@@ -20,15 +20,6 @@ class Home_TableViewVC: UITableViewController {
     }
 
     // MARK: - Table view data source
-
-//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//
-//        if section == 1 {
-//
-//            return "
-//        }
-//        return "Section \(section)"
-//    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
 
@@ -89,7 +80,7 @@ class Home_TableViewVC: UITableViewController {
 
         if indexPath.section == 0 {
 
-            return 100
+            return 40
 
         } else if indexPath.section == 1 {
 
@@ -107,7 +98,7 @@ class Home_TableViewVC: UITableViewController {
 
             let cell = tableView.dequeueReusableCell(withIdentifier: "searchButtonTableCell", for: indexPath)
 
-            if let searchButtonCell = cell as? Home_SearchButtonTableCell {
+            if let searchButtonCell = cell as? SearchButtonTableCell {
 
                 searchButtonCell.searchButton.tag = indexPath.row
                 searchButtonCell.searchButton.addTarget(self, action: #selector(searchButtonClicked(_:)), for: .touchUpInside)
@@ -119,7 +110,7 @@ class Home_TableViewVC: UITableViewController {
 
             let cell = tableView.dequeueReusableCell(withIdentifier: "favoritesMovieTableCell", for: indexPath)
 
-            if let favoritesMovieCell = cell as? Home_FavoritesMovieTableCell {
+            if let favoritesMovieCell = cell as? CollectionViewMovieTableCell {
 
                 favoritesMovieCell.favoriteMovieButtonAction = { [weak self] tag in
 
@@ -132,13 +123,33 @@ class Home_TableViewVC: UITableViewController {
         } else {
 
             let cell = tableView.dequeueReusableCell(withIdentifier: "staffPickTableCell", for: indexPath)
+
+            if indexPath.row != 0 {
+
+                let separatorView = UIView(frame: CGRect(x: 30, y:0, width: tableView.frame.width-60, height: 1))
+                separatorView.backgroundColor = .black
+
+                cell.addSubview(separatorView)
+            }
+
             return cell
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if segue.identifier == "searchButtonSegue" {
+
+            let _ = segue.destination as! SearchViewController
+            // Do something
         }
     }
 
     @objc func searchButtonClicked (_ sender:UIButton) {
 
-        print("SDSeSD")
+        print("Search button clicked")
+
+        performSegue(withIdentifier: "searchButtonSegue", sender: self)
     }
 
     func favouriteMovieClicked(tag: Int) {
