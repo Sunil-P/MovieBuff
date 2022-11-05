@@ -87,7 +87,6 @@
                                             </userDefinedRuntimeAttributes>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstItem="Huy-NI-Hnu" firstAttribute="leading" secondItem="gx6-8X-jFK" secondAttribute="leading" constant="30" id="Gxg-Ex-LzG"/>
                                         <constraint firstItem="Huy-NI-Hnu" firstAttribute="centerY" secondItem="gx6-8X-jFK" secondAttribute="centerY" id="nzN-ba-ly7"/>
@@ -147,7 +146,6 @@
                                             </cells>
                                         </collectionView>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstItem="mG5-by-kAL" firstAttribute="top" secondItem="TGq-cN-Gnr" secondAttribute="top" constant="30" id="DwX-Zd-h2e"/>
                                         <constraint firstAttribute="bottom" secondItem="mG5-by-kAL" secondAttribute="bottom" id="aMP-yx-jVv"/>
@@ -178,32 +176,28 @@
                                                 <userDefinedRuntimeAttribute type="image" keyPath="image" value="samplePoster"/>
                                             </userDefinedRuntimeAttributes>
                                         </view>
-                                        <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cnV-EU-MIW" userLabel="MainStackView">
-                                            <rect key="frame" x="125" y="69.5" width="240" height="61"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="r9Q-xv-0y8" userLabel="MainStackView">
+                                            <rect key="frame" x="115" y="72.5" width="224" height="55"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fji-OH-bT9" userLabel="LabelStackView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="41"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kOY-vh-0jm" userLabel="LabelStackView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="224" height="41"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FLK-mB-jaV">
-                                                            <rect key="frame" x="0.0" y="0.0" width="240" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2008" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40z-z3-TQu" userLabel="YearLabel">
+                                                            <rect key="frame" x="0.0" y="0.0" width="224" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                            <color key="textColor" name="mediumEmphasis.light"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="LabelDSFDSFDSFDSF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LlS-0H-sPN">
-                                                            <rect key="frame" x="0.0" y="20.5" width="240" height="20.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Dark Knight Rises" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pu8-9Q-x0r" userLabel="TitleLabel">
+                                                            <rect key="frame" x="0.0" y="20.5" width="224" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" name="highEmphasis.light"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yCb-cy-Hdn" customClass="RatingView" customModule="FrontendAppKit" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="41" width="240" height="20"/>
-                                                    <color key="backgroundColor" systemColor="linkColor"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="240" id="R7Z-uV-Nv5"/>
-                                                    </constraints>
+                                                <view contentMode="scaleToFill" placeholderIntrinsicWidth="58" placeholderIntrinsicHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="NnH-uA-Qqy" customClass="RatingView" customModule="FrontendAppKit" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="45" width="224" height="10"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="starSize">
                                                             <integer key="value" value="10"/>
@@ -215,28 +209,29 @@
                                                 </view>
                                             </subviews>
                                         </stackView>
-                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8S-3s-nMb" customClass="FavoritesButton" customModule="FrontendAppKit" customModuleProvider="target">
-                                            <rect key="frame" x="343.5" y="81.5" width="40.5" height="37"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epl-Z0-nbc" userLabel="FavoritesButton" customClass="FavoritesButton" customModule="FrontendAppKit" customModuleProvider="target">
+                                            <rect key="frame" x="360" y="93" width="24" height="14"/>
                                             <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="plain" image="favoritesButton.off"/>
+                                            <buttonConfiguration key="configuration" style="plain"/>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="backgroundColor" name="highEmphasis"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="B8S-3s-nMb" secondAttribute="trailing" constant="30" id="4p3-eJ-Ypd"/>
-                                        <constraint firstItem="cnV-EU-MIW" firstAttribute="centerY" secondItem="aid-xd-GXb" secondAttribute="centerY" id="FwC-qE-nXs"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="r9Q-xv-0y8" secondAttribute="trailing" constant="55" id="9am-mD-HzJ"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="epl-Z0-nbc" secondAttribute="trailing" constant="10" id="Nwq-fQ-NAW"/>
+                                        <constraint firstItem="epl-Z0-nbc" firstAttribute="centerY" secondItem="aid-xd-GXb" secondAttribute="centerY" id="PyW-XW-SX6"/>
                                         <constraint firstItem="weT-8t-cIV" firstAttribute="leading" secondItem="aid-xd-GXb" secondAttribute="leading" constant="30" id="UwP-hL-a5j"/>
-                                        <constraint firstItem="B8S-3s-nMb" firstAttribute="centerY" secondItem="aid-xd-GXb" secondAttribute="centerY" id="Y4F-5d-Hsw"/>
-                                        <constraint firstItem="cnV-EU-MIW" firstAttribute="leading" secondItem="weT-8t-cIV" secondAttribute="trailing" constant="35" id="cdi-mo-1dv"/>
+                                        <constraint firstItem="r9Q-xv-0y8" firstAttribute="leading" secondItem="weT-8t-cIV" secondAttribute="trailing" constant="25" id="aUn-FE-yJX"/>
+                                        <constraint firstItem="r9Q-xv-0y8" firstAttribute="centerY" secondItem="aid-xd-GXb" secondAttribute="centerY" id="qCQ-Oi-8ha"/>
                                         <constraint firstItem="weT-8t-cIV" firstAttribute="centerY" secondItem="aid-xd-GXb" secondAttribute="centerY" id="y4k-gO-uVR"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" name="primary"/>
                                 <connections>
-                                    <outlet property="favoritesButton" destination="B8S-3s-nMb" id="Nhu-1F-LFh"/>
                                     <outlet property="moviePosterView" destination="weT-8t-cIV" id="kFZ-1W-4Vm"/>
-                                    <outlet property="releaseDateLabel" destination="FLK-mB-jaV" id="aQE-xg-8BT"/>
-                                    <outlet property="titleLabel" destination="LlS-0H-sPN" id="YKg-DA-1Mc"/>
+                                    <outlet property="ratingView" destination="NnH-uA-Qqy" id="ydU-ea-MeQ"/>
+                                    <outlet property="titleLabel" destination="Pu8-9Q-x0r" id="qrF-3V-6UX"/>
+                                    <outlet property="yearLabel" destination="40z-z3-TQu" id="Abu-FF-cXJ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -697,7 +692,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NmR-Nh-1G0" userLabel="MainStackView">
-                                            <rect key="frame" x="125" y="84.5" width="240" height="61"/>
+                                            <rect key="frame" x="125" y="89.5" width="240" height="51"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Sg0-cZ-h7z" userLabel="LabelStackView">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="41"/>
@@ -717,10 +712,11 @@
                                                     </subviews>
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DtU-Y3-9EI" customClass="RatingView" customModule="FrontendAppKit" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="41" width="240" height="20"/>
+                                                    <rect key="frame" x="0.0" y="41" width="240" height="10"/>
                                                     <color key="backgroundColor" systemColor="linkColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="240" id="n96-D3-CR4"/>
+                                                        <constraint firstAttribute="height" constant="10" id="xdT-ER-kYb"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="starSize">
@@ -773,16 +769,19 @@
         <designable name="7pi-a2-TCE">
             <size key="intrinsicContentSize" width="24" height="14"/>
         </designable>
-        <designable name="B8S-3s-nMb">
-            <size key="intrinsicContentSize" width="40.5" height="37"/>
-        </designable>
         <designable name="ChR-pD-cr7">
             <size key="intrinsicContentSize" width="24" height="14"/>
         </designable>
         <designable name="FYL-iM-St8">
             <size key="intrinsicContentSize" width="40.5" height="37"/>
         </designable>
+        <designable name="NnH-uA-Qqy">
+            <size key="intrinsicContentSize" width="58" height="10"/>
+        </designable>
         <designable name="awo-78-316">
+            <size key="intrinsicContentSize" width="24" height="14"/>
+        </designable>
+        <designable name="epl-Z0-nbc">
             <size key="intrinsicContentSize" width="24" height="14"/>
         </designable>
         <designable name="iYW-dC-obO">
@@ -807,6 +806,9 @@
         </namedColor>
         <namedColor name="mediumEmphasis">
             <color red="0.078431372549019607" green="0.10980392156862745" blue="0.14509803921568629" alpha="0.69999998807907104" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="mediumEmphasis.light">
+            <color red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

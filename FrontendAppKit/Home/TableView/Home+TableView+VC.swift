@@ -10,13 +10,18 @@ import UIKit
 class Home_TableViewVC: UITableViewController {
 
     override func viewDidLoad() {
+
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        var frame = UIScreen.main.bounds
+        frame.origin.y = -frame.size.height
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        let bounceView = UIView(frame: frame)
+        bounceView.backgroundColor = .white
+
+        self.view.addSubview(bounceView)
+
+        tableView.backgroundColor = Styles.ColorIds.highEmphasis
     }
 
     // MARK: - Table view data source
@@ -38,39 +43,75 @@ class Home_TableViewVC: UITableViewController {
         }
     }
 
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+
+        let view = UIView()
+
+        if section > 0 {
+
+            view.backgroundColor = Styles.ColorIds.highEmphasis
+
+        } else {
+
+            view.backgroundColor = .white
+        }
+
+        return view
+    }
+
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
         guard section != 0 else {
 
-            return nil
+            let view = UIView()
+
+            view.backgroundColor = .white
+
+            return view
         }
 
         let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
-
-        let regularTypography = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12, weight: .medium)]
-        let boldTypography = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12, weight: .heavy)]
 
         let label = UILabel()
         label.frame = CGRect.init(x: 30, y: 0, width: headerView.frame.width, height: headerView.frame.height-10)
         label.font = .systemFont(ofSize: 12)
         label.textColor = Styles.ColorIds.highEmphasis
         headerView.addSubview(label)
+        headerView.backgroundColor = .white
 
         if section == 1 {
 
-            let sectionHeaderString = NSMutableAttributedString(string:"YOUR", attributes: regularTypography)
-            let suffixString = NSMutableAttributedString(string:" FAVORITES", attributes:boldTypography)
-            sectionHeaderString.append(suffixString)
+            let sectionHeaderString = NSMutableAttributedString(
 
+                string:"YOUR",
+                attributes: Styles.AttributedTypography.regularTypographyLight
+            )
+            let suffixString = NSMutableAttributedString(
+
+                string:" FAVORITES",
+                attributes:Styles.AttributedTypography.boldTypographyLight
+            )
+
+            sectionHeaderString.append(suffixString)
             label.attributedText = sectionHeaderString
 
         } else if section == 2 {
 
-            let sectionHeaderString = NSMutableAttributedString(string:"OUR", attributes: regularTypography)
-            let suffixString = NSMutableAttributedString(string:" STAFF PICKS", attributes:boldTypography)
-            sectionHeaderString.append(suffixString)
+            let sectionHeaderString = NSMutableAttributedString(
 
+                string:"OUR",
+                attributes: Styles.AttributedTypography.regularTypographyDark
+            )
+            let suffixString = NSMutableAttributedString(
+
+                string:" STAFF PICKS",
+                attributes: Styles.AttributedTypography.boldTypographyDark
+            )
+
+            sectionHeaderString.append(suffixString)
             label.attributedText = sectionHeaderString
+
+            headerView.backgroundColor = Styles.ColorIds.highEmphasis
         }
 
         return headerView
@@ -80,7 +121,7 @@ class Home_TableViewVC: UITableViewController {
 
         if indexPath.section == 0 {
 
-            return 40
+            return 80
 
         } else if indexPath.section == 1 {
 

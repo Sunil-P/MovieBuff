@@ -14,23 +14,33 @@ class FavoritesButton: UIButton {
 
         super.init(frame: frame)
 
-        self.isOn = false
-        self.updateImage()
-        self.addTarget(self, action: #selector(btnClicked(_:)), for: .touchUpInside)
+        isOn = false
+        updateImage()
+        addTarget(self, action: #selector(btnClicked(_:)), for: .touchUpInside)
     }
 
     override func awakeFromNib() {
 
         super.awakeFromNib()
-        self.isOn = false
-        self.updateImage()
-        self.addTarget(self, action: #selector(btnClicked(_:)), for: .touchUpInside)
+        isOn = false
+        updateImage()
+        addTarget(self, action: #selector(btnClicked(_:)), for: .touchUpInside)
     }
 
     required init?(coder decoder: NSCoder) {
 
         super.init(coder: decoder)
     }
+
+
+    var isOn: Bool = false {
+
+        didSet {
+
+            updateImage()
+        }
+    }
+    var forceDarkTheme = false
 
     @objc func btnClicked (_ sender:UIButton) {
 
@@ -40,21 +50,13 @@ class FavoritesButton: UIButton {
         }
     }
 
-    var isOn: Bool = false {
-
-        didSet {
-
-            self.updateImage()
-        }
-    }
-
     // MARK: Privates:
 
     private func updateImage() {
 
         typealias ImageAsset = Styles.Images
 
-        self.setImage(isOn ? ImageAsset.onImage : ImageAsset.offImage, for: .normal)
+        self.setImage(isOn ? Styles.Images.Favorites.on : Styles.Images.Favorites.off, for: .normal)
     }
 
 } // FavoritesButton

@@ -14,8 +14,11 @@ class CollectionViewMovieTableCell: UITableViewCell, UICollectionViewDelegate, U
     var favoriteMovieButtonAction: ((_ tag: Int)->())?
 
     override func awakeFromNib() {
+
         super.awakeFromNib()
         // Initialization code
+
+        backgroundView = BackgroundView()
 
         collectionView.delegate = self
         collectionView.dataSource = self
