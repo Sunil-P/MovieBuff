@@ -38,20 +38,7 @@ class KeyfactView: UIView {
         setup()
     }
 
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        self.updateColors()
-        self.setNeedsDisplay()
-    }
-
     // MARK: Privates:
-
-    private let color = (
-
-        backgroundColor: UIColor(named: "veryLowEmphasisPill", in: Styles.frontendAppKitBundle, compatibleWith: nil)!,
-        tertiaryLabel: UIColor(named: "tertiaryLabel", in: Styles.frontendAppKitBundle, compatibleWith: .none)!,
-        factLabel: UIColor(named: "factLabel", in: Styles.frontendAppKitBundle, compatibleWith: .none)!
-    )
 
     private var stackView: UIStackView!
 
@@ -69,12 +56,7 @@ class KeyfactView: UIView {
         refreshStackView()
 
         self.layer.cornerRadius = 14
-        self.layer.backgroundColor = color.backgroundColor.cgColor
-    }
-
-    private func updateColors() {
-
-        self.layer.backgroundColor = color.backgroundColor.resolvedColor(with: self.traitCollection).cgColor
+        self.layer.backgroundColor = Styles.ColorIds.veryLowEmphasisPill.cgColor
     }
 
     private func refreshStackView() {
@@ -85,7 +67,8 @@ class KeyfactView: UIView {
 
             let keyLabel = UILabel()
             keyLabel.text = key
-            keyLabel.textColor = color.tertiaryLabel
+            keyLabel.numberOfLines = 2
+            keyLabel.textColor = Styles.ColorIds.highEmphasis
             keyLabel.font = UIFont.systemFont(ofSize: 12, weight: .heavy)
 
             stackView.addArrangedSubview(keyLabel)
@@ -95,19 +78,19 @@ class KeyfactView: UIView {
 
             let factLabel = UILabel()
             factLabel.text = fact
-            factLabel.textColor = color.factLabel
+            factLabel.textColor = .black
             factLabel.numberOfLines = 2
             factLabel.font = UIFont.systemFont(ofSize: 16, weight: .light)
-
-            factLabel.widthAnchor.constraint(equalToConstant: 150).isActive = true
 
             stackView.addArrangedSubview(factLabel)
         }
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
 
-        stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
+        stackView.topAnchor.constraint(equalTo: topAnchor, constant: 12).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12).isActive = true
     }
 
 } // KeyfactView

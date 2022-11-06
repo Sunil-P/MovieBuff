@@ -9,10 +9,12 @@ import UIKit
 
 class SearchViewController: UIViewController,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate, UICollectionViewDataSource {
 
+    var tableViewController: SearchTableViewController!
+
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var searchTextField: UITextField!
-
     @IBOutlet weak var ratingCollectionView: UICollectionView!
+
     @IBAction func backButtonAction(_ sender: UIButton) {
 
         self.dismiss(animated: true)
@@ -21,6 +23,7 @@ class SearchViewController: UIViewController,UICollectionViewDelegateFlowLayout,
     override func viewDidLoad() {
 
         super.viewDidLoad()
+
         searchTextField.attributedPlaceholder = NSAttributedString(
             string: "Search all movies",
             attributes: [NSAttributedString.Key.foregroundColor: Styles.ColorIds.lowEmphasisLight]
@@ -31,7 +34,20 @@ class SearchViewController: UIViewController,UICollectionViewDelegateFlowLayout,
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
 
-        .darkContent
+        .lightContent
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if segue.identifier == "tableViewEmbedSegue" {
+
+            if let vc = segue.destination as? SearchTableViewController {
+
+                self.tableViewController = vc
+
+                setupTableViewController()
+            }
+        }
     }
 
     // MARK: UICollectionViewDelegateFlowLayout
@@ -65,7 +81,7 @@ class SearchViewController: UIViewController,UICollectionViewDelegateFlowLayout,
 
             withReuseIdentifier: "ratingButtonCollectionCell", for: indexPath
 
-        ) as! Search_RatingCollectionCell
+        ) as! RatingCollectionCell
 
         cell.ratingButton.rating = 5-indexPath.row
         cell.handleAction = {
@@ -77,5 +93,13 @@ class SearchViewController: UIViewController,UICollectionViewDelegateFlowLayout,
         return cell
     }
 
+    private func setupTableViewController() {
 
+        tableViewController.movieCellClicked = { [weak self] tag in
+
+            print("Segue to fav movie with tag: \(tag)")
+
+            self?.performSegue(withIdentifier: "searchDetailsSegue", sender: self)
+        }
+    }
 }

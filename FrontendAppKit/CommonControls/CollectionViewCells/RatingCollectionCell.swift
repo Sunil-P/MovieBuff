@@ -1,5 +1,5 @@
 //
-//  Search+RatingCollectionCell.swift
+//  RatingCollectionCell.swift
 //  FrontendAppKit
 //
 //  Created by Subhrajyoti Patra on 11/3/22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Search_RatingCollectionCell: UICollectionViewCell {
+class RatingCollectionCell: UICollectionViewCell {
 
     @IBOutlet weak var ratingButton: RatingButtonView!
 
@@ -18,8 +18,4 @@ class Search_RatingCollectionCell: UICollectionViewCell {
         handleAction?()
     }
 
-    override func awakeFromNib() {
-
-        super.awakeFromNib()
-    }
-}
+} // RatingCollectionCell

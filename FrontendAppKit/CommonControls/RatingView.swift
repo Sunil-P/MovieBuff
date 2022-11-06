@@ -8,7 +8,7 @@
 import UIKit
 
 @IBDesignable
-class RatingView: UIView {
+class RatingView: UIView, CommonControls {
 
     override init(frame: CGRect) {
 
@@ -58,6 +58,13 @@ class RatingView: UIView {
             refreshStackView()
         }
     }
+    var overriddenTheme: OverriddenTheme = .light {
+
+        didSet {
+
+            refreshStackView()
+        }
+    }
 
     // MARK: Privates:
 
@@ -85,6 +92,8 @@ class RatingView: UIView {
 
     private func refreshStackView() {
 
+        typealias StarAsset = Styles.Images.Star
+
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         stackView.constraints.forEach {
 
@@ -98,9 +107,15 @@ class RatingView: UIView {
         let starSizeFloat = CGFloat(starSize)
         let emptyStarsCount = 5 - internalRating
 
+        let image = (
+
+            starFilled: StarAsset.filled,
+            starEmpty: overriddenTheme == .light ? StarAsset.empty.light : StarAsset.empty.dark
+        )
+
         (0..<internalRating).forEach { _ in
 
-            let imageView = UIImageView(image: Styles.Images.Star.filled)
+            let imageView = UIImageView(image: image.starFilled)
             imageView.heightAnchor.constraint(equalToConstant: starSizeFloat).isActive = true
             imageView.widthAnchor.constraint(equalToConstant: starSizeFloat).isActive = true
 
@@ -109,7 +124,7 @@ class RatingView: UIView {
 
         (0..<emptyStarsCount).forEach { _ in
 
-            let imageView = UIImageView(image: Styles.Images.Star.empty)
+            let imageView = UIImageView(image: image.starEmpty)
             imageView.heightAnchor.constraint(equalToConstant: starSizeFloat).isActive = true
             imageView.widthAnchor.constraint(equalToConstant: starSizeFloat).isActive = true
 

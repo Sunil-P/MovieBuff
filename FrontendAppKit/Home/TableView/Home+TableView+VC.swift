@@ -13,15 +13,7 @@ class Home_TableViewVC: UITableViewController {
 
         super.viewDidLoad()
 
-        var frame = UIScreen.main.bounds
-        frame.origin.y = -frame.size.height
-
-        let bounceView = UIView(frame: frame)
-        bounceView.backgroundColor = .white
-
-        self.view.addSubview(bounceView)
-
-        tableView.backgroundColor = Styles.ColorIds.highEmphasis
+        addEdgeViews()
     }
 
     // MARK: - Table view data source
@@ -133,6 +125,16 @@ class Home_TableViewVC: UITableViewController {
         }
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        guard indexPath.section == 2 else {
+
+            return
+        }
+
+        movieClicked(tag: indexPath.row)
+    }
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         if indexPath.section == 0 {
@@ -155,7 +157,7 @@ class Home_TableViewVC: UITableViewController {
 
                 favoritesMovieCell.favoriteMovieButtonAction = { [weak self] tag in
 
-                    self?.favouriteMovieClicked(tag: tag)
+                    self?.movieClicked(tag: tag)
                 }
             }
 
@@ -167,8 +169,8 @@ class Home_TableViewVC: UITableViewController {
 
             if indexPath.row != 0 {
 
-                let separatorView = UIView(frame: CGRect(x: 30, y:0, width: tableView.frame.width-60, height: 1))
-                separatorView.backgroundColor = .black
+                let separatorView = UIView(frame: CGRect(x: 110, y:0, width: tableView.frame.width-140, height: 1))
+                separatorView.backgroundColor = Styles.ColorIds.lowEmphasisLight
 
                 cell.addSubview(separatorView)
             }
@@ -193,9 +195,24 @@ class Home_TableViewVC: UITableViewController {
         performSegue(withIdentifier: "searchButtonSegue", sender: self)
     }
 
-    func favouriteMovieClicked(tag: Int) {
+    func movieClicked(tag: Int) {
 
         print("Segue to fav movie with tag: \(tag)")
+
+        performSegue(withIdentifier: "homeDetailsSegue", sender: self)
+    }
+
+    // MARK: Privates:
+
+    private func addEdgeViews() {
+
+        var frame = UIScreen.main.bounds
+        frame.origin.y = -frame.size.height
+        let bounceView = UIView(frame: frame)
+        bounceView.backgroundColor = .white
+        self.view.addSubview(bounceView)
+
+        tableView.backgroundColor = Styles.ColorIds.highEmphasis
     }
 
 } // Home_TableViewVC

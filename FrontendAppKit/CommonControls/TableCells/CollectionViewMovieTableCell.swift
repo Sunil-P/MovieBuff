@@ -16,7 +16,6 @@ class CollectionViewMovieTableCell: UITableViewCell, UICollectionViewDelegate, U
     override func awakeFromNib() {
 
         super.awakeFromNib()
-        // Initialization code
 
         backgroundView = BackgroundView()
 
@@ -39,23 +38,46 @@ class CollectionViewMovieTableCell: UITableViewCell, UICollectionViewDelegate, U
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let cell = collectionView.dequeueReusableCell(
+        if indexPath.row < 3 {
 
-            withReuseIdentifier: "favoritesMovieCollectionCell", for: indexPath
+            let cell = collectionView.dequeueReusableCell(
 
-        ) as! Home_FavoritesMovieCollectionCell
+                withReuseIdentifier: "favoritesMovieCollectionCell", for: indexPath
 
-        cell.moviePosterButton.tag = indexPath.row
-        cell.moviePosterButton.imageView?.image = UIImage(named: "samplePoster", in: Styles.frontendAppKitBundle, with: .none)
-        cell.moviePosterButton.addTarget(self, action: #selector(moviePosterButtonClicked(_:)), for: .touchUpInside)
+            ) as! MovieCollectionCell
 
-        return cell
+            cell.cellButton.tag = indexPath.row
+
+            let image = UIImage(named: "samplePoster", in: Styles.frontendAppKitBundle, with: .none)!
+            cell.cellButton.setImage(image, for: .normal)
+            cell.cellButton.addTarget(self, action: #selector(moviePosterButtonClicked(_:)), for: .touchUpInside)
+
+            return cell
+
+        } else {
+
+            let cell = collectionView.dequeueReusableCell(
+
+                withReuseIdentifier: "favoritesSeeAllCollectionCell", for: indexPath
+
+            ) as! SeeAllCollectionCell
+
+            cell.cellButton.tag = indexPath.row
+
+            cell.cellButton.addTarget(self, action: #selector(moviePosterButtonClicked(_:)), for: .touchUpInside)
+
+            return cell
+        }
     }
 
     @objc func moviePosterButtonClicked (_ sender:UIButton) {
 
         print("tag = \(sender.tag)")
         favoriteMovieButtonAction?(sender.tag)
+        if sender.tag == 3 {
+
+            print("See all button clicked")
+        }
     }
 
 } // CollectionViewMovieTableCell

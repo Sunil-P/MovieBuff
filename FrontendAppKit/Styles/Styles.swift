@@ -41,7 +41,7 @@ struct Styles {
             named: "veryLowEmphasisPill",
             in: Styles.frontendAppKitBundle,
             compatibleWith: .none
-        )
+        )!
 
     } // ColorIds
 
@@ -49,15 +49,33 @@ struct Styles {
 
         struct Favorites {
 
-            static let on = UIImage(named: "favoritesButton.on", in: Styles.frontendAppKitBundle, with: .none)
-            static let off = UIImage(named: "favoritesButton.on", in: Styles.frontendAppKitBundle, with: .none)
-        }
+            static let on = (
+
+                light: UIImage(named: "favoritesButton.on.light", in: Styles.frontendAppKitBundle, with: .none)!,
+                dark: UIImage(named: "favoritesButton.on.dark", in: Styles.frontendAppKitBundle, with: .none)!
+            )
+
+            static let off = (
+
+                light: UIImage(named: "favoritesButton.off.light", in: Styles.frontendAppKitBundle, with: .none)!,
+                dark: UIImage(named: "favoritesButton.off.dark", in: Styles.frontendAppKitBundle, with: .none)!
+            )
+
+        } // Favorites
+
         struct Star {
 
-            static let filled = UIImage(named: "star.filled", in: Styles.frontendAppKitBundle, with: .none)
-            static let empty = UIImage(named: "star.empty", in: Styles.frontendAppKitBundle, with: .none)
-        }
-        static let searchBtnImage = UIImage(named: "favorites.on", in: Styles.frontendAppKitBundle, with: .none)
+            static let empty = (
+
+                light: UIImage(named: "star.empty.light", in: Styles.frontendAppKitBundle, with: .none)!,
+                dark: UIImage(named: "star.empty.dark", in: Styles.frontendAppKitBundle, with: .none)!
+            )
+            static let filled = UIImage(named: "star.filled", in: Styles.frontendAppKitBundle, with: .none)!
+            static let white = UIImage(named: "star.white", in: Styles.frontendAppKitBundle, with: .none)!
+
+        } // Star
+
+        static let searchBtnImage = UIImage(named: "favorites.on", in: Styles.frontendAppKitBundle, with: .none)!
 
     } // Images
 

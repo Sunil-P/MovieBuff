@@ -52,11 +52,6 @@ class RatingButtonView: UIButton {
 
     // MARK: Privates:
 
-    private let starImage = (
-
-        white: UIImage(named: "star.white", in: Styles.frontendAppKitBundle, with: .none),
-        filled: UIImage(named: "star.filled", in: Styles.frontendAppKitBundle, with: .none)
-    )
     private var internalRating = 0 {
 
         didSet {
@@ -76,7 +71,7 @@ class RatingButtonView: UIButton {
 
     private func refreshImages() {
 
-        let image = isOn ? starImage.filled : starImage.white
+        let image = isOn ? Styles.Images.Star.filled : Styles.Images.Star.white
 
         let paddingX = 16
         let marginX = 2

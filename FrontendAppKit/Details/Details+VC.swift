@@ -9,6 +9,15 @@ import UIKit
 
 class Details_VC: UIViewController {
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+        setupViews()
+    }
+
+    // MARK: IBOutlets:
+
     // Header Section
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var movieTitleLabel: UILabel!
@@ -37,16 +46,21 @@ class Details_VC: UIViewController {
     @IBOutlet weak var languageKeyFactView: KeyfactView!
     @IBOutlet weak var ratingKeyFactView: KeyfactView!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // MARK: IBActions:
 
-        // Do any additional setup after loading the view.
-        setupViews()
+    @IBAction func handleCloseButtonAction(_ sender: Any) {
+
+        self.dismiss(animated: true)
+    }
+
+    @IBAction func handleFavoritesButtonAction(_ sender: Any) {
     }
 
     // MARK: Privates:
 
     private func setupViews() {
+
+        favoriteButton.overriddenTheme = .light
 
         pillListView.addPillLabel("Action")
         pillListView.addPillLabel("Science Fiction")

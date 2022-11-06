@@ -1,5 +1,5 @@
 //
-//  Home_StaffPickTableCell.swift
+//  MovieTableCell.swift
 //  FrontendAppKit
 //
 //  Created by Subhrajyoti Patra on 10/29/22.
@@ -13,18 +13,17 @@ class MovieTableCell: UITableViewCell {
     @IBOutlet weak var ratingView: RatingView!
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-
+    @IBOutlet weak var favoritesButton: FavoritesButton!
+    
     override func awakeFromNib() {
+
         super.awakeFromNib()
 
         ratingView.alignment = .leading
         moviePosterView.image = UIImage(named: "samplePoster", in: Styles.frontendAppKitBundle, with: .none)
+
+        favoritesButton.overriddenTheme = .dark
+        ratingView.overriddenTheme = .dark
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
-} // Home_StaffPickCell
+} // MovieTableCell

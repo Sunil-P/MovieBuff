@@ -12,6 +12,8 @@ class SearchTableViewController: UITableViewController {
     let data = ["Special", "Lightyear", "Inception", "The Dark Knight", "The Dark Knight", "The Dark Knight", "The Dark Knight"]
     var filteredData: [String]!
 
+    var movieCellClicked: ((Int)->())?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,6 +37,11 @@ class SearchTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
         150
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        movieCellClicked?(indexPath.row)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
