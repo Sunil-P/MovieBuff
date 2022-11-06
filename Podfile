@@ -7,6 +7,10 @@ target 'FrontendAppKit' do
   platform :ios, '15.5'
 
   # Pods for FrontendAppKit
+  pod 'RxCocoa'
+  pod 'RxRelay'
+  pod 'RxSwift'
+  pod 'Swinject'
 
   target 'FrontendAppKitTests' do
     # Pods for testing

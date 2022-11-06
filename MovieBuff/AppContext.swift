@@ -13,6 +13,8 @@ import Swinject
 struct AppContext {
 
     init() {
+
+        RootContext.register()
     }
 
 } // AppContext

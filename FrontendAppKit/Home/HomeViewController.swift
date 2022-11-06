@@ -1,13 +1,30 @@
 //
-//  Home+TableView+VC.swift
+//  HomeViewController.swift
 //  FrontendAppKit
 //
 //  Created by Subhrajyoti Patra on 10/29/22.
 //
 
+import CommonKit
+import Swinject
 import UIKit
+import RxSwift
 
-class Home_TableViewVC: UITableViewController {
+class HomeViewController: UITableViewController {
+
+    override init(style: UITableView.Style) {
+
+        self.viewModel = Container.default.resolver.resolve(Home.VM.Interface.self)!
+
+        super.init(style: style)
+    }
+
+    required init?(coder: NSCoder) {
+
+        self.viewModel = Container.default.resolver.resolve(Home.VM.Interface.self)!
+
+        super.init(coder: coder)
+    }
 
     override func viewDidLoad() {
 
@@ -31,7 +48,7 @@ class Home_TableViewVC: UITableViewController {
 
         } else {
 
-            return 5
+            return 4
         }
     }
 
@@ -204,6 +221,9 @@ class Home_TableViewVC: UITableViewController {
 
     // MARK: Privates:
 
+    private let viewModel: Home.VM.Interface
+    private let disposeBag = DisposeBag()
+
     private func addEdgeViews() {
 
         var frame = UIScreen.main.bounds
@@ -215,4 +235,4 @@ class Home_TableViewVC: UITableViewController {
         tableView.backgroundColor = Styles.ColorIds.highEmphasis
     }
 
-} // Home_TableViewVC
+} // HomeViewController
