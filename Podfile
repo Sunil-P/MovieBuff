@@ -11,6 +11,7 @@ target 'FrontendAppKit' do
   pod 'RxRelay'
   pod 'RxSwift'
   pod 'Swinject'
+  pod 'RxDataSources'
 
   target 'FrontendAppKitTests' do
     # Pods for testing

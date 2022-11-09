@@ -21,6 +21,7 @@
 		6B8A8EF7291C31B8007930CB /* Movie+VM+Impl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8A8EF6291C31B8007930CB /* Movie+VM+Impl.swift */; };
 		6B8A8F0D291C36F5007930CB /* Movie+Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8A8F0C291C36F5007930CB /* Movie+Manager.swift */; };
 		6B8A8F0F291C382B007930CB /* Movie+Manager+Impl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8A8F0E291C382B007930CB /* Movie+Manager+Impl.swift */; };
+		6B8A8F12291C6ABE007930CB /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8A8EE0291C251F007930CB /* HomeVC.swift */; };
 		6B8C773C290D69D500317023 /* CollectionViewMovieTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8C773B290D69D500317023 /* CollectionViewMovieTableCell.swift */; };
 		6B8C7740290D846E00317023 /* SearchButtonTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8C773F290D846E00317023 /* SearchButtonTableCell.swift */; };
 		6B8CE60C290C672D009B8337 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8CE60B290C672D009B8337 /* AppDelegate.swift */; };
@@ -788,6 +789,7 @@
 				6BCF4CA2290DB13A00FB041A /* Details+VC.swift in Sources */,
 				6BF2B3D1290C80B900581082 /* HomeViewController.swift in Sources */,
 				6B8A8EF5291C301A007930CB /* Movie+DecodableModel.swift in Sources */,
+				6B8A8F12291C6ABE007930CB /* HomeVC.swift in Sources */,
 				6B8A8EF1291C2FF8007930CB /* Movie.swift in Sources */,
 				6BF2B3D4290C886F00581082 /* MovieTableCell.swift in Sources */,
 				6BC88B922918263600DD9D77 /* SeeAllCollectionCell.swift in Sources */,
