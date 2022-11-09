@@ -8,6 +8,7 @@
 import CommonKit
 import Swinject
 import UIKit
+import RxCocoa
 import RxSwift
 
 class HomeViewController: UITableViewController {

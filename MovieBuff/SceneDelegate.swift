@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let bundle = Bundle(identifier: "spatra.FrontendAppKit")
         let storyboard = UIStoryboard(name: "Main", bundle: bundle)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "home")
+        let viewController = storyboard.instantiateViewController(withIdentifier: "home2")
 
         window.rootViewController = viewController
         self.window = window

@@ -45,6 +45,269 @@
             </objects>
             <point key="canvasLocation" x="-3488" y="-644"/>
         </scene>
+        <!--HomeVC-->
+        <scene sceneID="Y9y-OV-rBA">
+            <objects>
+                <viewController storyboardIdentifier="home2" id="Fde-uc-ALH" customClass="HomeVC" customModule="FrontendAppKit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Bv-De-eGL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="tQT-Yx-Fyd">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="searchButtonTableCell" rowHeight="100" id="fuU-1x-ENz" userLabel="SearchButtonTableCell" customClass="SearchButtonTableCell" customModule="FrontendAppKit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="49.5" width="414" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fuU-1x-ENz" id="aKe-DL-P7B">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5yC-44-U6c" userLabel="searchButton">
+                                                    <rect key="frame" x="30" y="26" width="48" height="48"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="48" id="gFe-vh-qW2"/>
+                                                        <constraint firstAttribute="width" constant="48" id="kOo-qG-tKZ"/>
+                                                    </constraints>
+                                                    <color key="tintColor" name="highEmphasis"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="searchButton">
+                                                        <backgroundConfiguration key="background" cornerRadius="12">
+                                                            <color key="backgroundColor" name="primary"/>
+                                                        </backgroundConfiguration>
+                                                    </buttonConfiguration>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                            <integer key="value" value="12"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                            <size key="value" width="0.0" height="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                            <real key="value" value="0.20000000000000001"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="5yC-44-U6c" firstAttribute="centerY" secondItem="aKe-DL-P7B" secondAttribute="centerY" id="MVA-dq-AOS"/>
+                                                <constraint firstItem="5yC-44-U6c" firstAttribute="leading" secondItem="aKe-DL-P7B" secondAttribute="leading" constant="30" id="oeu-FP-cqf"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="primary"/>
+                                        <connections>
+                                            <outlet property="searchButton" destination="5yC-44-U6c" id="aUe-dx-u6M"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="favoritesMovieTableCell" rowHeight="320" id="wlT-eS-TOw" userLabel="FavoritesMovieTableCell" customClass="CollectionViewMovieTableCell" customModule="FrontendAppKit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="149.5" width="414" height="320"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wlT-eS-TOw" id="hzr-KZ-FEL">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="320"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="G6d-mX-aBP" userLabel="FavoritesMovieCollectionView">
+                                                    <rect key="frame" x="30" y="30" width="354" height="290"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="30" minimumInteritemSpacing="30" id="xvd-jd-ICg">
+                                                        <size key="itemSize" width="182" height="270"/>
+                                                        <size key="estimatedItemSize" width="182" height="270"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="favoritesMovieCollectionCell" id="hqo-fz-XJn" userLabel="FavoritesMovieCollectionViewCell" customClass="MovieCollectionCell" customModule="FrontendAppKit" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="10" width="182" height="270"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <collectionViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="G5a-pT-HCJ">
+                                                                <rect key="frame" x="0.0" y="0.0" width="182" height="270"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4sK-6U-Tm1" userLabel="CellButton">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="182" height="270"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="182" id="23M-G2-ddt"/>
+                                                                            <constraint firstAttribute="height" constant="270" id="cXY-RY-agZ"/>
+                                                                        </constraints>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain"/>
+                                                                    </button>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="4sK-6U-Tm1" firstAttribute="centerX" secondItem="G5a-pT-HCJ" secondAttribute="centerX" id="LwQ-uo-rE9"/>
+                                                                    <constraint firstItem="4sK-6U-Tm1" firstAttribute="centerY" secondItem="G5a-pT-HCJ" secondAttribute="centerY" id="cCJ-zg-and"/>
+                                                                </constraints>
+                                                            </collectionViewCellContentView>
+                                                            <size key="customSize" width="182" height="270"/>
+                                                            <connections>
+                                                                <outlet property="cellButton" destination="4sK-6U-Tm1" id="rKy-bw-POh"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="favoritesSeeAllCollectionCell" id="fnG-je-oyo" userLabel="FavoritesSeeAllCollectionCell" customClass="SeeAllCollectionCell" customModule="FrontendAppKit" customModuleProvider="target">
+                                                            <rect key="frame" x="212" y="128.5" width="91" height="33"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <collectionViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="yHd-kO-ex0">
+                                                                <rect key="frame" x="0.0" y="0.0" width="91" height="33"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xAM-mZ-nVH" userLabel="CellButton">
+                                                                        <rect key="frame" x="0.5" y="1" width="90.5" height="31"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" image="forwardButton" imagePlacement="trailing" title="See All" imagePadding="6">
+                                                                            <backgroundConfiguration key="background" cornerRadius="14">
+                                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            </backgroundConfiguration>
+                                                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="14"/>
+                                                                            <color key="baseForegroundColor" name="highEmphasis"/>
+                                                                        </buttonConfiguration>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                                                <integer key="value" value="10"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                                                <real key="value" value="0.20000000000000001"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                                                <size key="value" width="0.0" height="0.0"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </button>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="xAM-mZ-nVH" firstAttribute="centerX" secondItem="yHd-kO-ex0" secondAttribute="centerX" id="ESz-Ix-v4N"/>
+                                                                    <constraint firstItem="xAM-mZ-nVH" firstAttribute="centerY" secondItem="yHd-kO-ex0" secondAttribute="centerY" id="Li7-0K-W6a"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                                        <real key="value" value="0.20000000000000001"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                                        <integer key="value" value="10"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                                        <size key="value" width="0.0" height="0.0"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </collectionViewCellContentView>
+                                                            <size key="customSize" width="91" height="33"/>
+                                                            <connections>
+                                                                <outlet property="cellButton" destination="xAM-mZ-nVH" id="clq-u7-ccb"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                </collectionView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="G6d-mX-aBP" secondAttribute="bottom" id="20q-J9-82p"/>
+                                                <constraint firstAttribute="trailing" secondItem="G6d-mX-aBP" secondAttribute="trailing" constant="30" id="FY3-bV-NG1"/>
+                                                <constraint firstItem="G6d-mX-aBP" firstAttribute="top" secondItem="hzr-KZ-FEL" secondAttribute="top" constant="30" id="mM7-se-pjM"/>
+                                                <constraint firstItem="G6d-mX-aBP" firstAttribute="leading" secondItem="hzr-KZ-FEL" secondAttribute="leading" constant="30" id="waa-Pa-f3h"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="primary"/>
+                                        <connections>
+                                            <outlet property="collectionView" destination="G6d-mX-aBP" id="qyF-Jp-clz"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="staffPickTableCell" rowHeight="200" id="pS5-gg-H73" userLabel="StaffPickTableCell" customClass="MovieTableCell" customModule="FrontendAppKit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="469.5" width="414" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pS5-gg-H73" id="JqZ-Zz-Hfi">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z6N-oO-UhA" userLabel="MoviePosterView" customClass="CustomImageView" customModule="FrontendAppKit" customModuleProvider="target">
+                                                    <rect key="frame" x="30" y="55" width="60" height="90"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="ZUd-BD-aRF"/>
+                                                        <constraint firstAttribute="height" constant="90" id="eaP-Yt-6kK"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="samplePoster"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="53B-Gn-I5B" userLabel="MainStackView">
+                                                    <rect key="frame" x="115" y="71.5" width="224" height="57"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="v9Q-o5-Olp" userLabel="LabelStackView">
+                                                            <rect key="frame" x="0.0" y="0.0" width="224" height="41"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2008" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cob-ob-ZHe" userLabel="YearLabel">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="224" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                    <color key="textColor" name="mediumEmphasis.light"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Dark Knight Rises" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfb-sa-oDJ" userLabel="TitleLabel">
+                                                                    <rect key="frame" x="0.0" y="20.5" width="224" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                    <color key="textColor" name="highEmphasis.light"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="58" placeholderIntrinsicHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="xFj-FJ-7aQ" customClass="RatingView" customModule="FrontendAppKit" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="47" width="224" height="10"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                                                    <integer key="value" value="10"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                                                    <integer key="value" value="3"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                    </subviews>
+                                                </stackView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y1s-H6-DrR" userLabel="FavoritesButton" customClass="FavoritesButton" customModule="FrontendAppKit" customModuleProvider="target">
+                                                    <rect key="frame" x="360" y="93" width="24" height="14"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain"/>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" name="highEmphasis"/>
+                                            <constraints>
+                                                <constraint firstItem="y1s-H6-DrR" firstAttribute="centerY" secondItem="JqZ-Zz-Hfi" secondAttribute="centerY" id="8Wu-6i-txF"/>
+                                                <constraint firstItem="Z6N-oO-UhA" firstAttribute="centerY" secondItem="JqZ-Zz-Hfi" secondAttribute="centerY" id="AQz-5R-JFJ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="53B-Gn-I5B" secondAttribute="trailing" constant="55" id="LFU-DT-geE"/>
+                                                <constraint firstItem="53B-Gn-I5B" firstAttribute="centerY" secondItem="JqZ-Zz-Hfi" secondAttribute="centerY" id="MfB-A5-j7V"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="y1s-H6-DrR" secondAttribute="trailing" constant="10" id="NzZ-BL-6RK"/>
+                                                <constraint firstItem="Z6N-oO-UhA" firstAttribute="leading" secondItem="JqZ-Zz-Hfi" secondAttribute="leading" constant="30" id="QGw-uP-Z0d"/>
+                                                <constraint firstItem="53B-Gn-I5B" firstAttribute="leading" secondItem="Z6N-oO-UhA" secondAttribute="trailing" constant="25" id="U29-se-OG3"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="primary"/>
+                                        <connections>
+                                            <outlet property="favoritesButton" destination="y1s-H6-DrR" id="vRO-RZ-Wxv"/>
+                                            <outlet property="moviePosterView" destination="Z6N-oO-UhA" id="edo-nr-Fwj"/>
+                                            <outlet property="ratingView" destination="xFj-FJ-7aQ" id="ohH-Cy-p2J"/>
+                                            <outlet property="titleLabel" destination="wfb-sa-oDJ" id="nHI-S5-pLv"/>
+                                            <outlet property="yearLabel" destination="cob-ob-ZHe" id="r76-3i-ikS"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="hzt-fi-0bm" id="Vvz-YO-LVd"/>
+                                    <outlet property="delegate" destination="hzt-fi-0bm" id="7MN-UH-rrj"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0AG-WN-x7G"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="homeTableView" destination="tQT-Yx-Fyd" id="Yah-qJ-dnO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EED-XA-Gcw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2612" y="-670"/>
+        </scene>
         <!--Home View Controller-->
         <scene sceneID="WXc-Nq-Fvc">
             <objects>
@@ -650,7 +913,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7pi-a2-TCE" userLabel="RatingButton" customClass="RatingButtonView" customModule="FrontendAppKit" customModuleProvider="target">
-                                                            <rect key="frame" x="25" y="0.0" width="30" height="30"/>
+                                                            <rect key="frame" x="28" y="8" width="24" height="14"/>
                                                             <state key="normal" title="Button"/>
                                                             <buttonConfiguration key="configuration" style="plain"/>
                                                             <connections>
@@ -842,9 +1105,15 @@
         <designable name="iYW-dC-obO">
             <size key="intrinsicContentSize" width="40.5" height="37"/>
         </designable>
+        <designable name="xFj-FJ-7aQ">
+            <size key="intrinsicContentSize" width="58" height="10"/>
+        </designable>
+        <designable name="y1s-H6-DrR">
+            <size key="intrinsicContentSize" width="24" height="14"/>
+        </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="tZo-i7-Ro2"/>
+        <segue reference="na5-wH-k7v"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="backButton" width="15" height="15"/>

@@ -16,6 +16,7 @@ public struct RootContext {
         let container = Container.default.container
 
         DataStore.Manager.Factory.register(with: container, scheduler: nil)
+        Movie.Manager.Factory.register(with: container, scheduler: nil)
         Home.VM.Factory.register(with: container, scheduler: nil)
     }
 }

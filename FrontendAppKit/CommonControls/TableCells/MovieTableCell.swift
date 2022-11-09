@@ -20,10 +20,8 @@ class MovieTableCell: UITableViewCell {
         super.awakeFromNib()
 
         ratingView.alignment = .leading
-        moviePosterView.image = UIImage(named: "samplePoster", in: Styles.frontendAppKitBundle, with: .none)
-
-        favoritesButton.overriddenTheme = .dark
         ratingView.overriddenTheme = .dark
+        favoritesButton.overriddenTheme = .dark
     }
 
 } // MovieTableCell

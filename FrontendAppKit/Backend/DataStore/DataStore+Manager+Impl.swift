@@ -51,6 +51,7 @@ extension DataStore.Manager {
 
             getFavoritedMovies()
             refreshAvailableMovies().subscribe().disposed(by: disposeBag)
+            refreshStaffPickMovies().subscribe().disposed(by: disposeBag)
         }
 
         // MARK: Interface:
@@ -65,7 +66,7 @@ extension DataStore.Manager {
             relay.staffPickMovieIds.asObservable()
         }
 
-        var availableMovies: Observable<[Int: Movie]> {
+        var availableMovies: Observable<[Int: Movie.DecodableModel.MovieModel]> {
 
             relay.availableMovies.asObservable()
         }
@@ -92,10 +93,10 @@ extension DataStore.Manager {
 
                         do {
 
-                            let movies = try jsonDecoder.decode([Movie].self, from: data)
+                            let movies = try jsonDecoder.decode([Movie.DecodableModel.MovieModel].self, from: data)
                             print("Successfully fetched movies.")
 
-                            var moviesDict = [Int: Movie]()
+                            var moviesDict = [Int: Movie.DecodableModel.MovieModel]()
 
                             movies.forEach {
 
@@ -137,21 +138,30 @@ extension DataStore.Manager {
 
                 let task = URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
 
+                    guard let this = self else {
+
+                        return
+                    }
+
                     if let data = data {
 
-                        if let staffPickMovies = try? JSONDecoder().decode([Movie].self, from: data) {
+                        let jsonDecoder = JSONDecoder()
+                        jsonDecoder.dateDecodingStrategy = .custom(this.customDateParser)
 
-                            print("Successfully fetched staff pick movies.")
+                        do {
 
-                            let ids = staffPickMovies.map { $0.id }
+                            let movies = try jsonDecoder.decode([Movie.DecodableModel.MovieModel].self, from: data)
+                            print("Successfully fetched movies.")
 
-                            self?.relay.staffPickMovieIds.accept(Set(ids))
+                            let set = Set(movies.map { $0.id })
+
+                            this.relay.staffPickMovieIds.accept(set)
 
                             completable(.completed)
 
-                        } else {
+                        } catch  {
 
-                            print("Invalid Response")
+                            print(error)
 
                             completable(.error(DataStoreError.unableToParse))
                         }
@@ -166,17 +176,35 @@ extension DataStore.Manager {
 
                 task.resume()
 
-                return Disposables.create {}
+                return Disposables.create { }
             }
         }
 
         func updateFavoriteMovie(id: Int) {
 
             var favoriteMovieIds = relay.favoriteMovieIds.value
-            favoriteMovieIds.insert(id)
-            relay.favoriteMovieIds.accept(favoriteMovieIds)
 
+            if favoriteMovieIds.contains(id) {
+
+                favoriteMovieIds.remove(id)
+
+            } else {
+
+                favoriteMovieIds.insert(id)
+            }
+
+            relay.favoriteMovieIds.accept(favoriteMovieIds)
             UserDefaults.standard.set(Array(favoriteMovieIds), forKey: "favorite_movies")
+            UserDefaults.standard.synchronize()
+        }
+
+        func getImage(fromUrl: URL) -> Single<UIImage> {
+
+            .create { single in
+
+                single(.success(UIImage()))
+                return Disposables.create { }
+            }
         }
 
         // MARK: Privates:
@@ -184,7 +212,7 @@ extension DataStore.Manager {
         private let disposeBag = DisposeBag()
         private let relay = (
 
-            availableMovies: BehaviorRelay(value: [Int: Movie]()),
+            availableMovies: BehaviorRelay(value: [Int: Movie.DecodableModel.MovieModel]()),
             staffPickMovieIds: BehaviorRelay(value: Set<Int>()),
             favoriteMovieIds: BehaviorRelay(value: Set<Int>())
         )

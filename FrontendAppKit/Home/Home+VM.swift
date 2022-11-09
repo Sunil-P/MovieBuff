@@ -7,14 +7,13 @@
 
 import RxCocoa
 import RxSwift
+import UIKit
 
 protocol Home_ViewModel_Interface {
 
-    var favoritedMovieIds: Driver<Set<Int>> { get }
-    var staffPickMovieIds: Driver<Set<Int>> { get }
-    var availableMovies: Driver<[Int: Movie]> { get }
+    var staffPickMovies: Observable<[Movie.VM.Interface]> { get }
+    var favoriteMovies: Observable<[Movie.VM.Interface]> { get }
 
-    func updateFavoriteMovie(id: Int)
     func refreshAvailableMovies() -> Completable
 
 } // HomeViewModel

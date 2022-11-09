@@ -11,9 +11,9 @@ import Swinject
 
 extension Home.VM {
 
-    public struct Factory {
+    struct Factory {
 
-        public static func register(
+        static func register(
 
             with container: Container,
             scheduler: SchedulerType?
@@ -50,29 +50,35 @@ extension Home.VM {
 
         init(with resolver: Resolver, scheduler: SchedulerType) {
 
-            self.model = DataStore.Manager.Factory.create(with: resolver)
+            self.model = Movie.Manager.Factory.create(with: resolver)
         }
 
         // MARK: Interface:
 
-        var favoritedMovieIds: Driver<Set<Int>> {
+        var favoriteMovies: Observable<[Movie.VM.Interface]> {
 
-            model.favoritedMovieIds.asDriver(onErrorDriveWith: .never())
+            model.favoriteMovieVMs
+
+                .map {
+
+                    $0.values.sorted { lhs, rhs in
+
+                        lhs.title < rhs.title
+                    }
+                }
         }
 
-        var staffPickMovieIds: Driver<Set<Int>> {
+        var staffPickMovies: Observable<[Movie.VM.Interface]> {
 
-            model.staffPickMovieIds.asDriver(onErrorDriveWith: .never())
-        }
+            model.staffPickMovieVMs
 
-        var availableMovies: Driver<[Int : Movie]> {
+                .map {
 
-            model.availableMovies.asDriver(onErrorDriveWith: .never())
-        }
+                    $0.values.sorted { lhs, rhs in
 
-        func updateFavoriteMovie(id: Int) {
-
-            model.updateFavoriteMovie(id: id)
+                        lhs.title < rhs.title
+                    }
+                }
         }
 
         func refreshAvailableMovies() -> Completable {
@@ -82,7 +88,7 @@ extension Home.VM {
 
         // MARK: Privates:
 
-        private let model: DataStore.Manager.Interface
+        private let model: Movie.Manager.Interface
 
     } // Impl
 
