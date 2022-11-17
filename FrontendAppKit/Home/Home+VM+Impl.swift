@@ -100,10 +100,7 @@ extension Home.VM {
                         MovieCollectionCellVM(movie: movieVM)
                     }
 
-                    if $0.count > 3 {
-
-                        result.append(SeeAllCellVM())
-                    }
+                    result.append(SeeAllCellVM())
 
                     return result
                 }
