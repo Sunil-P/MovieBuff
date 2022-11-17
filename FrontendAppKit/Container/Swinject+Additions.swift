@@ -1,8 +1,8 @@
 //
 //  Swinject+Additions.swift
-//  CommonKit
+//  FrontendAppKit
 //
-//  Created by Subhrajyoti Patra on 10/28/22.
+//  Created by Subhrajyoti Patra on 11/17/22.
 //
 
 import Swinject

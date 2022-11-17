@@ -42,6 +42,12 @@ struct Styles {
             in: Styles.frontendAppKitBundle,
             compatibleWith: .none
         )!
+        static let mediumEmphasis = UIColor(
+
+            named: "mediumEmphasis",
+            in: Styles.frontendAppKitBundle,
+            compatibleWith: .none
+        )!
 
     } // ColorIds
 
@@ -101,7 +107,18 @@ struct Styles {
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12, weight: .heavy),
             NSAttributedString.Key.foregroundColor: Styles.ColorIds.highEmphasisLight
         ]
-    }
+        static let movieTypography = [
+
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: .heavy),
+            NSAttributedString.Key.foregroundColor: Styles.ColorIds.highEmphasis
+        ]
+        static let yearTypography = [
+
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: .light),
+            NSAttributedString.Key.foregroundColor: Styles.ColorIds.mediumEmphasis
+        ]
+
+    } // AttributedTypography
 
     static let frontendAppKitBundle = Bundle(identifier: "spatra.FrontendAppKit")
 

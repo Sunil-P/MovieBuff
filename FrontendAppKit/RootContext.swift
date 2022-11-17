@@ -5,7 +5,6 @@
 //  Created by Subhrajyoti Patra on 11/6/22.
 //
 
-import CommonKit
 import Swinject
 import RxSwift
 
@@ -18,5 +17,6 @@ public struct RootContext {
         DataStore.Manager.Factory.register(with: container, scheduler: nil)
         Movie.Manager.Factory.register(with: container, scheduler: nil)
         Home.VM.Factory.register(with: container, scheduler: nil)
+        Search.VM.Factory.register(with: container, scheduler: nil)
     }
 }

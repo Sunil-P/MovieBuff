@@ -115,4 +115,5 @@ final class PillListView: UIView {
 
         PillLabel(title: title)
     }
-}
+
+} // PillListView

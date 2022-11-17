@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BackgroundView: UIView {
+final class BackgroundView: UIView {
 
     let points: [CGPoint] = [
 
@@ -58,4 +58,4 @@ class BackgroundView: UIView {
         return CGPoint(x: point.x * bounds.width + bounds.origin.x, y: point.y * bounds.height + bounds.origin.y)
     }
 
-}
+} // BackgroundView

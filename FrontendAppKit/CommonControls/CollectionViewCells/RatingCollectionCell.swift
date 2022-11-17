@@ -11,11 +11,11 @@ class RatingCollectionCell: UICollectionViewCell {
 
     @IBOutlet weak var ratingButton: RatingButtonView!
 
-    var handleAction: (()->())?
+    var cellButtonClicked: (()->())?
 
     @IBAction func ratingButtonAction(_ sender: RatingButtonView) {
 
-        handleAction?()
+        cellButtonClicked?()
     }
 
 } // RatingCollectionCell

@@ -7,8 +7,7 @@
 
 import UIKit
 
-@IBDesignable
-class RatingView: UIView, CommonControls {
+@IBDesignable class RatingView: UIView, CommonControls {
 
     override init(frame: CGRect) {
 
@@ -148,17 +147,6 @@ class RatingView: UIView, CommonControls {
 
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         }
-
-//        let marginX = 2
-//        let marginY = 0
-//
-//        let imageWidth = starSize
-//        let imageHeight = starSize
-//
-//        let width = CGFloat(5 * imageWidth + 4 * marginX)
-//        let height = CGFloat(imageHeight + marginY + marginY)
-//
-//        widthAnchor.constraint(equalToConstant: width).isActive = true
-//        heightAnchor.constraint(equalToConstant: height).isActive = true
     }
-}
+
+} // RatingView

@@ -11,6 +11,13 @@ class SeeAllCollectionCell: UICollectionViewCell {
 
     @IBOutlet weak var cellButton: UIButton!
 
+    @IBAction func handleCellButtonAction(_ sender: Any) {
+
+        cellButtonClicked?()
+    }
+
+    var cellButtonClicked: (() -> ())?
+
     override func awakeFromNib() {
 
         super.awakeFromNib()

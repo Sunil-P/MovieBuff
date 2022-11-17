@@ -16,7 +16,7 @@ protocol DataStore_Manager_Interface {
 
     func updateFavoriteMovie(id: Int)
     func refreshAvailableMovies() -> Completable
-    func getImage(fromUrl: URL) -> Single<UIImage>
+    func getImage(from url: URL) -> Single<UIImage> 
 
 } // DataStore_Manager_Interface
 

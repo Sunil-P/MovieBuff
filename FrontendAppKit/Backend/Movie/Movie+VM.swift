@@ -14,17 +14,26 @@ protocol Movie_ViewModel_Interface {
     var rating: Int { get }
     var title: String { get }
     var releaseYear: String { get }
+    var runtime: String { get }
+    var movieTags: [String] { get }
+    var overview: String { get }
     var isFavourite: Driver<Bool> { get }
+    var factBudget: String { get }
+    var factRevenue: String { get }
+    var factLanguage: String { get }
+    var factRating: String { get }
+
+    var director: Person.VM.Interface { get }
+    var cast: [Person.VM.Interface] { get }
 
     func toggleFavorite()
     func getImage() -> Single<UIImage>
-    func getImage(successHandler: ((UIImage)->())?, errorHandler: ((Error)->())?)
 
 } // Movie_ViewModel_Interface
 
 extension Movie {
 
-    class VM {
+    struct VM {
 
         struct Spec {
 

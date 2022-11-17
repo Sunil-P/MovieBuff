@@ -1,15 +1,16 @@
 //
-//  SearchViewController.swift
+//  Search+VC.swift
 //  FrontendAppKit
 //
 //  Created by Subhrajyoti Patra on 11/3/22.
 //
 
 import UIKit
+import Swinject
 
-class SearchViewController: UIViewController,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate, UICollectionViewDataSource {
+class Search_VC: UIViewController {
 
-    var tableViewController: SearchTableViewController!
+    var tableViewController: Search_TableVC!
 
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var searchTextField: UITextField!
@@ -17,7 +18,36 @@ class SearchViewController: UIViewController,UICollectionViewDelegateFlowLayout,
 
     @IBAction func backButtonAction(_ sender: UIButton) {
 
+        print("Back button has been clicked.")
+
         self.dismiss(animated: true)
+    }
+
+    @IBAction func textFieldDidChange(_ sender: UITextField) {
+
+        viewModel.updateTextFilter(text: sender.text ?? "")
+    }
+
+    init() {
+
+        print("Search.VC constructing...")
+
+        viewModel = Search.VM.Factory.create(with: resolver)
+
+        super.init()
+
+        print("Search.VC has been constructed.")
+    }
+
+    required init?(coder: NSCoder) {
+
+        print("Search.VC constructing...")
+
+        viewModel = Search.VM.Factory.create(with: resolver)
+
+        super.init(coder: coder)
+
+        print("Search.VC has been constructed.")
     }
 
     override func viewDidLoad() {
@@ -30,6 +60,24 @@ class SearchViewController: UIViewController,UICollectionViewDelegateFlowLayout,
         )
         ratingCollectionView.delegate = self
         ratingCollectionView.dataSource = self
+
+        tableViewController.movieCellClicked = { [weak self] movieVM in
+
+            self?.setupDetailsVC = { detailsVC in
+
+                detailsVC.setup(movieVM: movieVM)
+            }
+            self?.performSegue(withIdentifier: "searchDetailsSegue", sender: self)
+        }
+
+        tableViewController.setupTableView(viewModel: viewModel)
+
+        print("Search.VC did load.")
+    }
+
+    deinit {
+
+        print("~Search.VC has been destructed.")
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -41,16 +89,27 @@ class SearchViewController: UIViewController,UICollectionViewDelegateFlowLayout,
 
         if segue.identifier == "tableViewEmbedSegue" {
 
-            if let vc = segue.destination as? SearchTableViewController {
+            if let vc = segue.destination as? Search_TableVC {
 
                 self.tableViewController = vc
-
-                setupTableViewController()
             }
+
+        } else if segue.identifier == "searchDetailsSegue" {
+
+            let detailsVC = segue.destination as! Details_VC
+
+            setupDetailsVC?(detailsVC)
         }
     }
 
-    // MARK: UICollectionViewDelegateFlowLayout
+    // MARK: Privates:
+    private let viewModel: Search.VM.Interface
+    private let resolver = Container.default.resolver
+
+    private var setupDetailsVC: ((_ detailsVC: Details_VC)->())?
+}
+
+extension Search_VC: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
@@ -67,8 +126,9 @@ class SearchViewController: UIViewController,UICollectionViewDelegateFlowLayout,
 
         return .init(width: width , height: height)
     }
+}
 
-    // MARK: UICollectionViewDataSource:
+extension Search_VC: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
@@ -84,22 +144,12 @@ class SearchViewController: UIViewController,UICollectionViewDelegateFlowLayout,
         ) as! RatingCollectionCell
 
         cell.ratingButton.rating = 5-indexPath.row
-        cell.handleAction = {
+        cell.cellButtonClicked = { [weak self] in
 
-            print("Rating button clicked")
-            // handle rating button model click
+            cell.ratingButton.isOn.toggle()
+            self?.viewModel.updateRatingFilter(rating: cell.ratingButton.rating)
         }
 
         return cell
-    }
-
-    private func setupTableViewController() {
-
-        tableViewController.movieCellClicked = { [weak self] tag in
-
-            print("Segue to fav movie with tag: \(tag)")
-
-            self?.performSegue(withIdentifier: "searchDetailsSegue", sender: self)
-        }
     }
 }

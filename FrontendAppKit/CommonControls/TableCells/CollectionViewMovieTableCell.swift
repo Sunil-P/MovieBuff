@@ -5,78 +5,124 @@
 //  Created by Subhrajyoti Patra on 10/29/22.
 //
 
+import RxSwift
+import Swinject
 import UIKit
 
-class CollectionViewMovieTableCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
+class CollectionViewMovieTableCell: UITableViewCell {
 
     @IBOutlet weak var collectionView: UICollectionView!
 
-    var favoriteMovieButtonAction: ((_ tag: Int)->())?
+    required init?(coder: NSCoder) {
 
+        let resolver = Container.default.resolver
+
+        self.viewModel = Home.VM.Factory.create(with: resolver)
+
+        super.init(coder: coder)
+    }
     override func awakeFromNib() {
 
         super.awakeFromNib()
 
         backgroundView = BackgroundView()
 
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        setup()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    // MARK: -
 
-        // Configure the view for the selected state
+    var favouriteMovieBtnClicked: ((_ movieVM: Movie.VM.Interface)->())?
+    var seeAllBtnClicked: (() -> ())?
+
+    func setup() {
+
+        viewModel.collectionCellVMs
+
+            .bind(to: collectionView.rx.items) { [weak self] collectionView, row, element in
+
+                let indexPath = IndexPath(row: row, section: 0)
+
+                if let movieCellVM = element as? MovieCollectionCellVM {
+
+                    let movieCell = collectionView.dequeueReusableCell(
+
+                        withReuseIdentifier: "favoritesMovieCollectionCell", for: indexPath
+
+                    ) as! MovieCollectionCell
+
+                    self?.bindMovieCell(movieCell: movieCell, movieCellVM: movieCellVM, indexPath: indexPath)
+
+                    return movieCell
+
+                } else if let _ = element as? SeeAllCellVM {
+
+                    let seeAllCell = collectionView.dequeueReusableCell(
+
+                        withReuseIdentifier: "favoritesSeeAllCollectionCell", for: indexPath
+
+                    ) as! SeeAllCollectionCell
+
+                    self?.bindSeeAllCell(seeAllCell: seeAllCell)
+
+                    return seeAllCell
+                }
+
+                return UICollectionViewCell()
+            }
+            .disposed(by: disposeBag)
     }
 
-    // MARK: UICollectionViewDataSource:
+    // MARK: Privates:
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    private let disposeBag = DisposeBag()
+    private let viewModel: Home.VM.Interface
 
-        return 4
-    }
+    private var disposables = (
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        image: [Int: SerialDisposable](),
+        ()
+    )
 
-        if indexPath.row < 3 {
+    private func bindMovieCell(
 
-            let cell = collectionView.dequeueReusableCell(
+        movieCell: MovieCollectionCell,
+        movieCellVM: MovieCollectionCellVM,
+        indexPath: IndexPath
 
-                withReuseIdentifier: "favoritesMovieCollectionCell", for: indexPath
+    ) {
 
-            ) as! MovieCollectionCell
+        let imageDisposable = SerialDisposable()
+        imageDisposable.disposable = movieCellVM.movie.getImage()
 
-            cell.cellButton.tag = indexPath.row
+            .observe(on: MainScheduler.instance)
+            .subscribe { image in
 
-            let image = UIImage(named: "samplePoster", in: Styles.frontendAppKitBundle, with: .none)!
-            cell.cellButton.setImage(image, for: .normal)
-            cell.cellButton.addTarget(self, action: #selector(moviePosterButtonClicked(_:)), for: .touchUpInside)
+                movieCell.setupImage(image: image)
 
-            return cell
+            } onFailure: { error in
 
-        } else {
+                print("Error= \(error.localizedDescription)")
+            }
 
-            let cell = collectionView.dequeueReusableCell(
+        movieCell.cellButtonClicked = { [weak self] in
 
-                withReuseIdentifier: "favoritesSeeAllCollectionCell", for: indexPath
-
-            ) as! SeeAllCollectionCell
-
-            cell.cellButton.tag = indexPath.row
-
-            cell.cellButton.addTarget(self, action: #selector(moviePosterButtonClicked(_:)), for: .touchUpInside)
-
-            return cell
+            self?.favouriteMovieBtnClicked?(movieCellVM.movie)
         }
+
+        disposeBag.insert([
+
+            imageDisposable,
+        ])
+
+        disposables.image[indexPath.row] = imageDisposable
     }
 
-    @objc func moviePosterButtonClicked (_ sender:UIButton) {
+    private func bindSeeAllCell(seeAllCell: SeeAllCollectionCell) {
 
-        print("tag = \(sender.tag)")
-        favoriteMovieButtonAction?(sender.tag)
-        if sender.tag == 3 {
+        seeAllCell.cellButtonClicked = { [weak self] in
 
-            print("See all button clicked")
+            self?.seeAllBtnClicked?()
         }
     }
 

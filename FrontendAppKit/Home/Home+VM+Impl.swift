@@ -50,12 +50,70 @@ extension Home.VM {
 
         init(with resolver: Resolver, scheduler: SchedulerType) {
 
+            print("Home.VM constructing...")
+
             self.model = Movie.Manager.Factory.create(with: resolver)
+
+            print("Home.VM has been constructed.")
+        }
+
+        deinit {
+
+            print("~Home.VM has been destructed.")
         }
 
         // MARK: Interface:
 
-        var favoriteMovies: Observable<[Movie.VM.Interface]> {
+        var tableViewSections: Observable<[Home.RowSection]> {
+
+            staffPickMovies
+
+                .map { staffPickMovieVMs in
+
+                    let staffPickMovieRowItems = staffPickMovieVMs.map { movieVM in
+
+                        return Home.StaffPickMovieRowItem(movieVM: movieVM)
+                    }
+
+                    return [
+
+                        Home.RowSection(items: [Home.SearchRowItem()]),
+                        Home.RowSection(items: [Home.FavoriteMovieRowItem()]),
+                        Home.RowSection(items: staffPickMovieRowItems)
+                    ]
+                }
+        }
+
+        var collectionCellVMs: Observable<[CollectionCellVM]> {
+
+            favoriteMovies
+
+                .map {
+
+                    var result: [CollectionCellVM] = $0.prefix(3).map { movieVM in
+
+                        MovieCollectionCellVM(movie: movieVM)
+                    }
+
+                    if $0.count > 3 {
+
+                        result.append(SeeAllCellVM())
+                    }
+
+                    return result
+                }
+        }
+
+        func refreshAvailableMovies() -> Completable {
+
+            model.refreshAvailableMovies()
+        }
+
+        // MARK: Privates:
+
+        private let model: Movie.Manager.Interface
+
+        private var favoriteMovies: Observable<[Movie.VM.Interface]> {
 
             model.favoriteMovieVMs
 
@@ -68,7 +126,7 @@ extension Home.VM {
                 }
         }
 
-        var staffPickMovies: Observable<[Movie.VM.Interface]> {
+        private var staffPickMovies: Observable<[Movie.VM.Interface]> {
 
             model.staffPickMovieVMs
 
@@ -80,15 +138,6 @@ extension Home.VM {
                     }
                 }
         }
-
-        func refreshAvailableMovies() -> Completable {
-
-            model.refreshAvailableMovies()
-        }
-
-        // MARK: Privates:
-
-        private let model: Movie.Manager.Interface
 
     } // Impl
 

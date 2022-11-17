@@ -7,8 +7,7 @@
 
 import UIKit
 
-@IBDesignable
-class CustomImageView: UIView {
+@IBDesignable final class CustomImageView: UIView {
 
     override init(frame: CGRect) {
 
@@ -72,8 +71,8 @@ class CustomImageView: UIView {
         clipsToBounds = false
         backgroundColor = .clear
 
-        self.layer.addSublayer(shadowLayer)
-        self.layer.addSublayer(imageLayer)
+        layer.addSublayer(shadowLayer)
+        layer.addSublayer(imageLayer)
 
         if !title.isEmpty || !subtitle.isEmpty {
 
@@ -147,7 +146,7 @@ class CustomImageView: UIView {
 
         let gradientLayer = CAGradientLayer()
 
-        let gradientHeight = bounds.height * 4/9
+        let gradientHeight = bounds.height * 2/3
         let gradientY = bounds.height - gradientHeight
 
         gradientLayer.frame = .init(x: bounds.origin.x, y: gradientY, width: bounds.width, height: gradientHeight)
@@ -159,4 +158,5 @@ class CustomImageView: UIView {
 
         return gradientLayer
     }
-}
+
+} // CustomImageView

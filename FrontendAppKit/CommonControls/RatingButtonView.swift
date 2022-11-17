@@ -7,8 +7,7 @@
 
 import UIKit
 
-@IBDesignable
-class RatingButtonView: UIButton {
+@IBDesignable final class RatingButtonView: UIButton {
 
     @IBInspectable var rating: Int {
 

@@ -11,12 +11,12 @@ import UIKit
 
 protocol Home_ViewModel_Interface {
 
-    var staffPickMovies: Observable<[Movie.VM.Interface]> { get }
-    var favoriteMovies: Observable<[Movie.VM.Interface]> { get }
+    var tableViewSections: Observable<[Home.RowSection]> { get }
+    var collectionCellVMs: Observable<[CollectionCellVM]> { get }
 
     func refreshAvailableMovies() -> Completable
 
-} // HomeViewModel
+} // Home_ViewModel_Interface
 
 extension Home {
 

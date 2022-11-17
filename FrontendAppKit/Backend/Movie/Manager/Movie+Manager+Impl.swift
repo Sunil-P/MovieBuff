@@ -49,8 +49,17 @@ extension Movie.Manager {
 
         init(with resolver: Resolver, scheduler: SchedulerType) {
 
+            print("Movie.Manager constructing...")
+
             self.resolver = resolver
             self.dataStoreManager = DataStore.Manager.Factory.create(with: resolver)
+
+            print("Movie.Manager has been constructed.")
+        }
+
+        deinit {
+
+            print("~Movie.Manager has been destructed.")
         }
 
         // MARK: Interface:

@@ -7,8 +7,7 @@
 
 import UIKit
 
-@IBDesignable
-class KeyfactView: UIView {
+@IBDesignable final class KeyfactView: UIView {
 
     @IBInspectable var key: String = "" {
 

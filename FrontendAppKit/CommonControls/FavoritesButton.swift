@@ -7,24 +7,13 @@
 
 import UIKit
 
-@IBDesignable
-class FavoritesButton: UIButton, CommonControls {
+@IBDesignable final class FavoritesButton: UIButton, CommonControls {
 
     override init(frame: CGRect) {
 
         super.init(frame: frame)
 
-        isOn = false
         updateImage()
-        addTarget(self, action: #selector(btnClicked(_:)), for: .touchUpInside)
-    }
-
-    override func awakeFromNib() {
-
-        super.awakeFromNib()
-        isOn = false
-        updateImage()
-        addTarget(self, action: #selector(btnClicked(_:)), for: .touchUpInside)
     }
 
     required init?(coder decoder: NSCoder) {
@@ -32,19 +21,17 @@ class FavoritesButton: UIButton, CommonControls {
         super.init(coder: decoder)
     }
 
+    override func awakeFromNib() {
+
+        super.awakeFromNib()
+        updateImage()
+    }
+
     var isOn: Bool = false {
 
         didSet {
 
             updateImage()
-        }
-    }
-
-    @objc func btnClicked (_ sender:UIButton) {
-
-        if sender == self {
-
-            isOn.toggle()
         }
     }
 

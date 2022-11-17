@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PillLabel: UILabel {
+final class PillLabel: UILabel {
 
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -64,4 +64,5 @@ class PillLabel: UILabel {
         self.font = .systemFont(ofSize: 16, weight: .light)
         self.textColor = .black
     }
-}
+
+} // PillLabel

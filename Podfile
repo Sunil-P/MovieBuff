@@ -21,16 +21,6 @@ target 'FrontendAppKit' do
 
 end
 
-target 'CommonKit' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
-  platform :ios, '15.5'
-
-  # Pods for FrontendAppKit
-  pod 'Swinject'
-
-end
-
 target 'MovieBuff' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
