@@ -16,6 +16,7 @@ class MovieTableCell: UITableViewCell {
     @IBOutlet weak var favoritesButton: FavoritesButton!
 
     var separatorView = UIView()
+    var favoriteButtonClicked: (() -> ())?
     
     override func awakeFromNib() {
 
@@ -27,6 +28,13 @@ class MovieTableCell: UITableViewCell {
 
         separatorView.backgroundColor = Styles.ColorIds.lowEmphasisLight
         addSubview(separatorView)
+
+        favoritesButton.addTarget(self, action: #selector(handleFavButtonAction), for: .touchUpInside)
+    }
+
+    @objc private func handleFavButtonAction() {
+
+        favoriteButtonClicked?()
     }
 
 } // MovieTableCell

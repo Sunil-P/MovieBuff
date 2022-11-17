@@ -87,12 +87,10 @@ class Search_TableVC: UITableViewController {
                 cell.favoritesButton.rx.isOn
             )
 
-            let favoriteBtnTapDisposable = cell.favoritesButton.rx.tap
+            cell.favoriteButtonClicked = {
 
-                .subscribe(onNext: {
-
-                    movieVM.toggleFavorite()
-                })
+                movieVM.toggleFavorite()
+            }
 
             let imgDisposable = movieVM.getImage()
 
@@ -111,14 +109,12 @@ class Search_TableVC: UITableViewController {
             this.disposeBag.insert([
 
                 favoriteBtnStateDisposable,
-                favoriteBtnTapDisposable,
                 imgDisposable,
             ])
 
             let disposable = CompositeDisposable(
 
                 favoriteBtnStateDisposable,
-                favoriteBtnTapDisposable,
                 imgDisposable
             )
 

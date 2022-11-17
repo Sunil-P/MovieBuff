@@ -243,17 +243,15 @@ class Home_VC: UIViewController {
             previousDisposable.dispose()
         }
 
+        cell.favoriteButtonClicked = {
+
+            rowItem.movieVM.toggleFavorite()
+        }
+
         let favoriteBtnStateDisposable = rowItem.movieVM.isFavourite.drive(
 
             cell.favoritesButton.rx.isOn
         )
-
-        let favoriteBtnTapDisposable = cell.favoritesButton.rx.tap
-
-            .subscribe(onNext: {
-
-                rowItem.movieVM.toggleFavorite()
-            })
 
         let imgDisposable = rowItem.movieVM.getImage()
 
@@ -271,14 +269,12 @@ class Home_VC: UIViewController {
         disposeBag.insert([
 
             favoriteBtnStateDisposable,
-            favoriteBtnTapDisposable,
             imgDisposable,
         ])
 
         let disposable = CompositeDisposable(
 
             favoriteBtnStateDisposable,
-            favoriteBtnTapDisposable,
             imgDisposable
         )
 
