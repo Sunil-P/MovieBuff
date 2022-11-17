@@ -104,6 +104,7 @@ class Home_VC: UIViewController {
             homeTableView.rx.itemSelected
 
         )
+        .observe(on: MainScheduler.instance)
         .subscribe(onNext: { [weak self] tableViewSections, selectedIndex in
 
             guard selectedIndex.section == 2 else {
@@ -170,6 +171,7 @@ class Home_VC: UIViewController {
 
         viewModel.tableViewSections
 
+            .observe(on: MainScheduler.instance)
             .bind(to: homeTableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
 
@@ -182,6 +184,7 @@ class Home_VC: UIViewController {
         homeTableView.refreshControl = refreshControl
         refreshControl.rx.controlEvent(.valueChanged)
 
+            .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
 
                 self?.viewModel.refreshAvailableMovies()

@@ -42,7 +42,6 @@ class Search_TableVC: UITableViewController {
         Observable.combineLatest(
 
             viewModel.movieVMs, tableView.rx.itemSelected
-
         )
         .subscribe(onNext: { [weak self] movieVMs, itemIndex in
 
@@ -52,7 +51,6 @@ class Search_TableVC: UITableViewController {
             }
 
             let movieVM = movieVMs[itemIndex.row]
-
             self?.movieCellClicked?(movieVM)
         })
         .disposed(by: disposeBag)

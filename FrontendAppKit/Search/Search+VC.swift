@@ -68,7 +68,11 @@ class Search_VC: UIViewController {
 
                 detailsVC.setup(movieVM: movieVM)
             }
-            self?.performSegue(withIdentifier: "searchDetailsSegue", sender: self)
+
+            DispatchQueue.main.async {
+
+                self?.performSegue(withIdentifier: "searchDetailsSegue", sender: self)
+            }
         }
 
         tableViewController.setupTableView(viewModel: viewModel)
@@ -119,6 +123,7 @@ class Search_VC: UIViewController {
         tableViewController.refreshControl = refreshControl
         refreshControl.rx.controlEvent(.valueChanged)
 
+            .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
 
                 self?.viewModel.refreshAvailableMovies()
