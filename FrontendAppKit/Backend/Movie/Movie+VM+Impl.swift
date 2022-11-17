@@ -66,6 +66,11 @@ extension Movie.VM {
 
         // MARK: Interface:
 
+        var id: Int {
+
+            movieModel.id
+        }
+
         var rating: Int {
 
             Int(movieModel.rating.rounded())

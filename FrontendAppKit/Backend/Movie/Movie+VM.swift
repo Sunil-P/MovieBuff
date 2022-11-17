@@ -11,6 +11,7 @@ import UIKit
 
 protocol Movie_ViewModel_Interface {
 
+    var id: Int { get }
     var rating: Int { get }
     var title: String { get }
     var releaseYear: String { get }

@@ -39,18 +39,17 @@ class Search_TableVC: UITableViewController {
         tableView.delegate = nil
         tableView.dataSource = nil
 
-        Observable.zip(
+        tableView.rx.itemSelected.withLatestFrom(
 
-            viewModel.movieVMs, tableView.rx.itemSelected
-        )
-        .subscribe(onNext: { [weak self] movieVMs, itemIndex in
+            viewModel.movieVMs,
+            resultSelector: { itemIndex, movieVMs in
 
-            guard !movieVMs.isEmpty else {
-
-                return
+                movieVMs[itemIndex.row]
             }
+        )
+        .observe(on: MainScheduler.instance)
+        .subscribe(onNext: { [weak self] movieVM in
 
-            let movieVM = movieVMs[itemIndex.row]
             self?.movieCellClicked?(movieVM)
         })
         .disposed(by: disposeBag)
