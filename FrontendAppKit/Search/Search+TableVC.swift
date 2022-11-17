@@ -46,6 +46,11 @@ class Search_TableVC: UITableViewController {
         )
         .subscribe(onNext: { [weak self] movieVMs, itemIndex in
 
+            guard !movieVMs.isEmpty else {
+
+                return
+            }
+
             let movieVM = movieVMs[itemIndex.row]
 
             self?.movieCellClicked?(movieVM)
