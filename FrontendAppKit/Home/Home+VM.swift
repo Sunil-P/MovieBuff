@@ -11,10 +11,11 @@ import UIKit
 
 protocol Home_ViewModel_Interface {
 
+    var isRefreshing: Observable<Bool> { get }
     var tableViewSections: Observable<[Home.RowSection]> { get }
     var collectionCellVMs: Observable<[CollectionCellVM]> { get }
 
-    func refreshAvailableMovies() -> Completable
+    func refreshAvailableMovies()
 
 } // Home_ViewModel_Interface
 

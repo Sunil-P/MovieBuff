@@ -9,10 +9,12 @@ import RxSwift
 
 protocol Search_VM_Interface {
 
+    var isRefreshing: Observable<Bool> { get }
     var movieVMs: Observable<[Movie.VM.Interface]> { get }
 
     func updateTextFilter(text: String)
     func updateRatingFilter(rating: Int)
+    func refreshAvailableMovies()
 
 } // Search_VM_Interface
 

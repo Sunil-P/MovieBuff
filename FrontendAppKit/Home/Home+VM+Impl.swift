@@ -64,6 +64,11 @@ extension Home.VM {
 
         // MARK: Interface:
 
+        var isRefreshing: Observable<Bool> {
+
+            refreshRelay.asObservable()
+        }
+
         var tableViewSections: Observable<[Home.RowSection]> {
 
             staffPickMovies
@@ -104,15 +109,30 @@ extension Home.VM {
                 }
         }
 
-        func refreshAvailableMovies() -> Completable {
+        func refreshAvailableMovies() {
 
-            model.refreshAvailableMovies()
+            refreshDisposable.disposable = model.refreshAvailableMovies()
+
+                .do(onSubscribe: { [weak self] in
+
+                    self?.refreshRelay.accept(true)
+
+                }, onDispose: { [weak self] in
+
+                    self?.refreshRelay.accept(false)
+                })
+                .subscribe()
+
+            refreshDisposable.disposed(by: disposeBag)
         }
 
         // MARK: Privates:
 
+        private let disposeBag = DisposeBag()
         private let model: Movie.Manager.Interface
+        private let refreshRelay = BehaviorRelay(value: false)
 
+        private var refreshDisposable = SerialDisposable()
         private var favoriteMovies: Observable<[Movie.VM.Interface]> {
 
             model.favoriteMovieVMs

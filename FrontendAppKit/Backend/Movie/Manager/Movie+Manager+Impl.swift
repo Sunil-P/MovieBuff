@@ -121,10 +121,7 @@ extension Movie.Manager {
 
         func refreshAvailableMovies() -> Completable {
 
-            .create { completable in
-
-                return Disposables.create()
-            }
+            dataStoreManager.refreshAvailableMovies()
         }
 
         // MARK: Privates:

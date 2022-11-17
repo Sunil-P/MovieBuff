@@ -177,6 +177,21 @@ class Home_VC: UIViewController {
 
             .setDelegate(self)
             .disposed(by: disposeBag)
+
+        let refreshControl = UIRefreshControl()
+        homeTableView.refreshControl = refreshControl
+        refreshControl.rx.controlEvent(.valueChanged)
+
+            .subscribe(onNext: { [weak self] in
+
+                self?.viewModel.refreshAvailableMovies()
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.isRefreshing
+
+            .bind(to: refreshControl.rx.isRefreshing)
+            .disposed(by: disposeBag)
     }
 
     private func bindSearchRowItem(cell: SearchButtonTableCell) {

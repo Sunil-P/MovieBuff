@@ -64,6 +64,11 @@ extension Search.VM {
 
         // MARK: Interface:
 
+        var isRefreshing: Observable<Bool> {
+
+            refreshRelay.asObservable()
+        }
+
         var movieVMs: Observable<[Movie.VM.Interface]> {
 
             Observable.combineLatest(
@@ -121,10 +126,30 @@ extension Search.VM {
             filterRelay.rating.accept(ratingFilters)
         }
 
+        func refreshAvailableMovies() {
+
+            refreshDisposable.disposable = model.refreshAvailableMovies()
+
+                .do(onSubscribe: { [weak self] in
+
+                    self?.refreshRelay.accept(true)
+
+                }, onDispose: { [weak self] in
+
+                    self?.refreshRelay.accept(false)
+                })
+                .subscribe()
+
+            refreshDisposable.disposed(by: disposeBag)
+        }
+
         // MARK: Privates:
 
+        private let disposeBag = DisposeBag()
         private let model: Movie.Manager.Interface
+        private let refreshRelay = BehaviorRelay(value: false)
 
+        private var refreshDisposable = SerialDisposable()
         private var filterRelay = (
 
             text: BehaviorRelay(value: ""),

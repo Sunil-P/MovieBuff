@@ -5,8 +5,9 @@
 //  Created by Subhrajyoti Patra on 11/3/22.
 //
 
-import UIKit
+import RxSwift
 import Swinject
+import UIKit
 
 class Search_VC: UIViewController {
 
@@ -92,6 +93,8 @@ class Search_VC: UIViewController {
             if let vc = segue.destination as? Search_TableVC {
 
                 self.tableViewController = vc
+
+                self.setupTableVC()
             }
 
         } else if segue.identifier == "searchDetailsSegue" {
@@ -103,10 +106,30 @@ class Search_VC: UIViewController {
     }
 
     // MARK: Privates:
+
+    private let disposeBag = DisposeBag()
     private let viewModel: Search.VM.Interface
     private let resolver = Container.default.resolver
 
     private var setupDetailsVC: ((_ detailsVC: Details_VC)->())?
+
+    private func setupTableVC() {
+
+        let refreshControl = UIRefreshControl()
+        tableViewController.refreshControl = refreshControl
+        refreshControl.rx.controlEvent(.valueChanged)
+
+            .subscribe(onNext: { [weak self] in
+
+                self?.viewModel.refreshAvailableMovies()
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.isRefreshing
+
+            .bind(to: refreshControl.rx.isRefreshing)
+            .disposed(by: disposeBag)
+    }
 }
 
 extension Search_VC: UICollectionViewDelegateFlowLayout {
