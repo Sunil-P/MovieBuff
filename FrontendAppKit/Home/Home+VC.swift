@@ -190,6 +190,7 @@ class Home_VC: UIViewController {
 
         viewModel.isRefreshing
 
+            .observe(on: MainScheduler.instance)
             .bind(to: refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
     }
