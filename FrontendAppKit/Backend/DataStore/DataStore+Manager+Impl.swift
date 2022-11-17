@@ -209,9 +209,9 @@ extension DataStore.Manager {
 
         func getImage(from url: URL) -> Single<UIImage> {
 
-            .create { [weak self] single in
+            .create { [weak self, imageCache] single in
 
-                if let image = self?.imageCache[url.absoluteString] {
+                if let image = imageCache[url.absoluteString] {
 
 //                    print("Successfully retrieved image from cache (url=...\(url.absoluteString.suffix(10))).")
                     single(.success(image))
