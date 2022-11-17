@@ -649,6 +649,32 @@
                                     <constraint firstItem="6fu-p0-h1A" firstAttribute="leading" secondItem="EYW-5w-66D" secondAttribute="leading" id="YQs-d7-2q0"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fLb-6g-ULc" userLabel="NoAvailableMoviesView">
+                                <rect key="frame" x="127" y="398" width="160" height="100"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noAvailableMovies" translatesAutoresizingMaskIntoConstraints="NO" id="bSn-PJ-Tve">
+                                        <rect key="frame" x="56" y="0.0" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="hc2-lw-Ssv"/>
+                                            <constraint firstAttribute="width" constant="48" id="nRI-Qo-UDD"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Movies found 😞" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKD-zs-nHJ">
+                                        <rect key="frame" x="0.0" y="80" width="160" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="16"/>
+                                        <color key="textColor" name="mediumEmphasis.light"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="D2N-kb-drS"/>
+                                    <constraint firstItem="bSn-PJ-Tve" firstAttribute="top" secondItem="fLb-6g-ULc" secondAttribute="top" id="HP7-Yc-GBp"/>
+                                    <constraint firstItem="jKD-zs-nHJ" firstAttribute="centerX" secondItem="fLb-6g-ULc" secondAttribute="centerX" id="KjJ-6E-lhc"/>
+                                    <constraint firstAttribute="bottom" secondItem="jKD-zs-nHJ" secondAttribute="bottom" id="eOs-LB-IdL"/>
+                                    <constraint firstAttribute="height" constant="100" id="gNQ-KL-soz"/>
+                                    <constraint firstItem="bSn-PJ-Tve" firstAttribute="centerX" secondItem="fLb-6g-ULc" secondAttribute="centerX" id="txO-zj-qpk"/>
+                                </constraints>
+                            </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JDi-r4-rxP">
                                 <rect key="frame" x="0.0" y="194" width="414" height="668"/>
                                 <connections>
@@ -660,6 +686,8 @@
                         <color key="backgroundColor" name="highEmphasis"/>
                         <constraints>
                             <constraint firstItem="4cg-Bd-gOu" firstAttribute="trailing" secondItem="EYW-5w-66D" secondAttribute="trailing" id="1uC-A8-aGN"/>
+                            <constraint firstItem="fLb-6g-ULc" firstAttribute="centerX" secondItem="Gii-FY-KLH" secondAttribute="centerX" id="6ei-5q-MFY"/>
+                            <constraint firstItem="fLb-6g-ULc" firstAttribute="centerY" secondItem="Gii-FY-KLH" secondAttribute="centerY" id="7n6-Yd-Suf"/>
                             <constraint firstItem="4cg-Bd-gOu" firstAttribute="trailing" secondItem="JDi-r4-rxP" secondAttribute="trailing" id="RFj-tK-a2c"/>
                             <constraint firstItem="EYW-5w-66D" firstAttribute="top" secondItem="4cg-Bd-gOu" secondAttribute="top" constant="30" id="S4i-hB-KEw"/>
                             <constraint firstItem="JDi-r4-rxP" firstAttribute="top" secondItem="EYW-5w-66D" secondAttribute="bottom" id="WFF-Fm-VmG"/>
@@ -670,6 +698,7 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="56e-AX-AJ2" id="xcK-wV-3sS"/>
+                        <outlet property="noAvailableMoviesView" destination="fLb-6g-ULc" id="OeS-36-N0q"/>
                         <outlet property="ratingCollectionView" destination="6fu-p0-h1A" id="6hB-QE-QEx"/>
                         <outlet property="searchTextField" destination="YE2-zr-VnF" id="hzY-LC-YCa"/>
                         <segue destination="Y0t-48-Cne" kind="presentation" identifier="searchDetailsSegue" id="tZo-i7-Ro2"/>
@@ -813,6 +842,7 @@
         <image name="closeButton" width="30" height="29.5"/>
         <image name="favoritesButton.off.light" width="16.5" height="23"/>
         <image name="forwardButton" width="13" height="13"/>
+        <image name="noAvailableMovies" width="48" height="49"/>
         <image name="searchButton" width="20.5" height="20.5"/>
         <namedColor name="elevated">
             <color red="0.14117647058823529" green="0.19607843137254902" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

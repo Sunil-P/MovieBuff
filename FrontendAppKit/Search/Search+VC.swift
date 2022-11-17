@@ -16,7 +16,8 @@ class Search_VC: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var ratingCollectionView: UICollectionView!
-
+    @IBOutlet weak var noAvailableMoviesView: UIView!
+    
     @IBAction func backButtonAction(_ sender: UIButton) {
 
         print("Back button has been clicked.")
@@ -133,6 +134,16 @@ class Search_VC: UIViewController {
         viewModel.isRefreshing
 
             .bind(to: refreshControl.rx.isRefreshing)
+            .disposed(by: disposeBag)
+
+        viewModel.movieVMs
+
+            .map { $0.isEmpty }
+            .subscribe(onNext: { [weak self] in
+
+                self?.noAvailableMoviesView.isHidden = !$0
+                self?.tableViewController.tableView.isHidden = $0
+            })
             .disposed(by: disposeBag)
     }
 }
