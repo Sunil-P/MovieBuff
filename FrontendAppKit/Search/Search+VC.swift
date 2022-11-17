@@ -139,6 +139,7 @@ class Search_VC: UIViewController {
         viewModel.movieVMs
 
             .map { $0.isEmpty }
+            .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
 
                 self?.noAvailableMoviesView.isHidden = !$0
