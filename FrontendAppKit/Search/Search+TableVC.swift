@@ -39,7 +39,7 @@ class Search_TableVC: UITableViewController {
         tableView.delegate = nil
         tableView.dataSource = nil
 
-        Observable.combineLatest(
+        Observable.zip(
 
             viewModel.movieVMs, tableView.rx.itemSelected
         )
